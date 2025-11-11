@@ -1447,11 +1447,6 @@
         </div>
     </div>
     
-    <div class="footer">
-        <h2>Ready to Combine & Publish?</h2>
-        <p>Follow the steps below to make this a live page on GitHub!</p>
-    </div>
-
     <script>
         // Project 1 Tab Switching Logic
         function switchTab(tabId) {
