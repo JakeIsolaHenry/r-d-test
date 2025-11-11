@@ -1,10 +1,19 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System1 - Monetizing Content for Creators</title>
+    <title>Combined Project: Monetizing Content & SolarFlow</title>
+
+    <meta name="description" content="Interactive demonstration of user journeys for both content monetization and solar panel marketing flows.">
+    <meta name="keywords" content="content monetization, creators, solar panels, solar energy, user journey, marketing flow, lead generation">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💡</text></svg>" type="image/svg+xml">
+
     <style>
+        /* ============================================
+           MERGED CSS STYLES
+           ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -12,6 +21,7 @@
         }
 
         body {
+            /* Project 1 Gradient Background */
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             background-attachment: fixed;
@@ -19,6 +29,7 @@
             min-height: 100vh;
         }
 
+        /* Project 1 Styles */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -54,6 +65,8 @@
             gap: 10px;
             padding: 20px;
             flex-wrap: wrap;
+            /* Added padding-top to separate from main header on large screens */
+            padding-top: 0; 
         }
 
         .tab-button {
@@ -153,6 +166,8 @@
             overflow: hidden;
             position: relative;
         }
+        
+        /* NOTE: .phone-screen selector exists in BOTH CSS blocks, Project 1's is more specific here */
 
         .phone-notch {
             position: absolute;
@@ -430,7 +445,7 @@
 
         .search-chip.alt3:hover {
             background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
+            }
 
         .serp {
             padding: 40px 20px 20px;
@@ -638,6 +653,9 @@
             flex-wrap: wrap;
         }
 
+        /* Merged Toggle Button Style Conflict - Project 1 version kept due to usage */
+        /* .toggle-btn style from Project 1 is kept for main tabs */
+        /* .toggle-btn style from Project 2 is more specific and only appears in the appended content */
         .toggle-btn {
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.5);
@@ -651,7 +669,8 @@
             backdrop-filter: blur(10px);
             text-align: center;
         }
-
+        
+        /* Using the Project 1 active style for the SolarFlow section as well */
         .toggle-btn.active {
             background: white;
             color: #667eea;
@@ -678,7 +697,8 @@
             font-size: 18px;
             opacity: 0.9;
         }
-
+        
+        /* Merged Media Queries (Project 1) */
         @media (max-width: 1200px) {
             .phone-container {
                 gap: 40px;
@@ -719,9 +739,126 @@
                 transform: rotate(90deg);
             }
         }
+
+        /* Project 2 Overriding/Additional Styles (only a few kept for a non-iframe, simple display) */
+        /* NOTE: The elaborate mobile scrolling logic from Project 2 CSS is intentionally omitted
+           as it relies on a multi-stage layout and external files that can't be merged easily. 
+           We're keeping only the essential styles for the SolarFlow content itself. */
+        
+        .flow-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white; /* Added white background for the SolarFlow content block */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 40px;
+            padding: 0 20px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .path-button {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            align-self: center;
+            transform: translateY(4px);
+        }
+        
+        .stage-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0px;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .phone-frame {
+            background: #1f1f1f;
+            border-radius: 35px;
+            padding: 8px;
+            margin: 5px auto; 
+            width: 300px;
+            height: 650px;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .phone-frame .phone-screen {
+             border-radius: 27px; /* Override Project 1 inner border-radius */
+        }
+        
+        .page-iframe {
+            /* This is the critical scaling to make a larger page fit inside a small phone frame */
+            width: 430px;
+            height: 932px;
+            border: none;
+            border-radius: 27px;
+            transform: scale(0.675);
+            transform-origin: center center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -215px;
+            margin-top: -466px;
+        }
+
+        /* SolarFlow Mobile Mockup Styles */
+        .social-ad-mockup {
+            background: #f0f2f5;
+            overflow-y: auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .facebook-ad {
+            background: white;
+            margin: 8px;
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 700px; 
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* The rest of the Project 2 mock-up styles are included in the HTML inline or below the main media query block in Project 1's code. */
+        
     </style>
 </head>
 <body>
+    
     <div class="header">
         <div class="system1-logo">SYSTEM1</div>
         <h1>MONETIZING CONTENT FOR CREATORS</h1>
@@ -732,10 +869,10 @@
         <button class="tab-button" onclick="switchTab('linktree2')">Linktree 2</button>
         <button class="tab-button" onclick="switchTab('linktree3')">Linktree 3</button>
         <button class="tab-button" onclick="switchTab('linktree4')">Linktree 4</button>
+        <button class="tab-button" onclick="switchTab('solarflow')">SolarFlow Demo</button>
     </div>
 
     <div class="container">
-        <!-- Linktree 1 - Position 4 -->
         <div class="flow-section active" id="linktree1">
             <div class="sticky-container">
                 <div class="phone-container">
@@ -851,7 +988,6 @@
             </div>
         </div>
 
-        <!-- Linktree 2 - Position 1 -->
         <div class="flow-section" id="linktree2">
             <div class="sticky-container">
                 <div class="phone-container">
@@ -954,7 +1090,6 @@
             </div>
         </div>
 
-        <!-- Linktree 3 - Position 2 -->
         <div class="flow-section" id="linktree3">
             <div class="sticky-container">
                 <div class="phone-container">
@@ -1057,7 +1192,6 @@
             </div>
         </div>
 
-        <!-- Linktree 4 - Position 3 -->
         <div class="flow-section" id="linktree4">
             <div class="sticky-container">
                 <div class="phone-container">
@@ -1161,3393 +1295,310 @@
         </div>
     </div>
     
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolarFlow - User Journey Overview</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Interactive solar panel marketing flow demonstration showing user journey from social media to content engagement.">
-    <meta name="keywords" content="solar panels, solar energy, user journey, marketing flow, lead generation">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="SolarFlow - User Journey Overview">
-    <meta property="og:description" content="Interactive demonstration of solar panel marketing user journey">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>☀️</text></svg>" type="image/svg+xml">
-    
-    <script>
-        // GLOBAL FUNCTIONS - LOADED FIRST
-        let autoRotateInterval;
-        let currentView = 0; // 0 = social, 1 = thank you, 2 = disqualify, 3 = linktree
-        const views = ['social', 'thankyou', 'disqualify', 'linktree'];
-        const ROTATION_INTERVAL = 5000; // 5 seconds between rotations
-        
-        // Handle Linktree click to navigate to external URL
-        function handleLinktreeClick() {
-            // Stop auto-rotation on user interaction
-            stopAutoRotation();
-            
-            // Open the Nation.com article in a new tab
-            window.open('https://www.nation.com/how-solar-energy-reduces-costs-and-boosts-home-value-en-us/', '_blank');
-        }
-        
-        // Main view functions
-        function showSocial() {
-            // Stop auto-rotation on user interaction
-            stopAutoRotation();
-            
-            document.getElementById('stage1-iframe').style.display = 'none';
-            document.getElementById('stage1-social-div').style.display = 'block';
-            document.getElementById('stage1-linktree-div').style.display = 'none';
-            document.getElementById('stage1-linktree-div').style.visibility = 'hidden';
-            
-            // Update button highlighting
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[onclick="showSocial()"]').classList.add('active');
-            
-            // Update bottom section
-            document.getElementById('stage1-title').textContent = 'Ad on Socials';
-            document.getElementById('stage1-description').innerHTML = '<p style="margin: 0; color: #555; line-height: 1.6;">Learn More button links out to content page.</p>';
-            
-            currentView = 0;
-        }
-        
-        function showThankYou() {
-            // Stop auto-rotation on user interaction
-            stopAutoRotation();
-            
-            document.getElementById('stage1-social-div').style.display = 'none';
-            document.getElementById('stage1-linktree-div').style.display = 'none';
-            document.getElementById('stage1-linktree-div').style.visibility = 'hidden';
-            document.getElementById('stage1-iframe').style.display = 'block';
-            document.getElementById('stage1-iframe').src = 'flow.html?step=6&hideDevNav=true';
-            
-            // Update button highlighting
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[onclick="showThankYou()"]').classList.add('active');
-            
-            // Update bottom section
-            document.getElementById('stage1-title').textContent = 'Thank You Page';
-            document.getElementById('stage1-description').innerHTML = '<p style="margin: 0 0 15px 0; color: #555; line-height: 1.6;">One option to place content articles within the flow. Can be slotted in to any part of the flow on any vertical.</p><div style="text-align: right;"><a href="index.html" class="path-button">Path</a></div>';
-            
-            currentView = 1;
-        }
-        
-        function showDisqualify() {
-            // Stop auto-rotation on user interaction
-            stopAutoRotation();
-            
-            document.getElementById('stage1-social-div').style.display = 'none';
-            document.getElementById('stage1-linktree-div').style.display = 'none';
-            document.getElementById('stage1-linktree-div').style.visibility = 'hidden';
-            document.getElementById('stage1-iframe').style.display = 'block';
-            document.getElementById('stage1-iframe').src = 'flow.html?step=4&autoSelect=mostly-shade&showPopup=true&hideDevNav=true';
-            
-            // Update button highlighting
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[onclick="showDisqualify()"]').classList.add('active');
-            
-            // Update bottom section
-            document.getElementById('stage1-title').textContent = 'Disqualifying Offer';
-            document.getElementById('stage1-description').innerHTML = '<p style="margin: 0 0 15px 0; color: #555; line-height: 1.6;">User can be shown a link to a content article on any vertical if they do not qualify for an offer.</p><div style="text-align: right;"><a href="index.html" class="path-button">Path</a></div>';
-            
-            currentView = 2;
-        }
-        
-        function showLinktree() {
-            // Stop auto-rotation on user interaction
-            stopAutoRotation();
-            
-            document.getElementById('stage1-iframe').style.display = 'none';
-            document.getElementById('stage1-social-div').style.display = 'none';
-            
-            const linktreeDiv = document.getElementById('stage1-linktree-div');
-            linktreeDiv.style.display = 'block';
-            linktreeDiv.style.visibility = 'visible';
-            
-            // Update button highlighting
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[onclick="showLinktree()"]').classList.add('active');
-            
-            // Update bottom section
-            document.getElementById('stage1-title').textContent = 'Linktree';
-            document.getElementById('stage1-description').innerHTML = '<p style="margin: 0; color: #555; line-height: 1.6;">User clicks on Linktree button linking out to article.</p>';
-            
-            currentView = 3;
-        }
-        
-        // Auto-rotation function
-        function rotateView() {
-            // Move to next view
-            currentView = (currentView + 1) % 4;
-            
-            // Show appropriate view
-            if (currentView === 0) {
-                showSocial();
-            } else if (currentView === 1) {
-                showThankYou();
-            } else if (currentView === 2) {
-                showDisqualify();
-            } else {
-                showLinktree();
-            }
-        }
-        
-        // Start auto-rotation
-        function startAutoRotation() {
-            // Clear any existing interval
-            if (autoRotateInterval) {
-                clearInterval(autoRotateInterval);
-            }
-            
-            // Set up new rotation interval
-            autoRotateInterval = setInterval(rotateView, ROTATION_INTERVAL);
-        }
-        
-        // Stop auto-rotation
-        function stopAutoRotation() {
-            if (autoRotateInterval) {
-                clearInterval(autoRotateInterval);
-                autoRotateInterval = null;
-            }
-        }
-        
-        // Restart auto-rotation
-        function restartAutoRotation() {
-            stopAutoRotation();
-            startAutoRotation();
-        }
-        
-        // Manually switch to a specific view
-        function switchToView(viewName) {
-            if (viewName === 'social') {
-                showSocial();
-            } else if (viewName === 'thankyou') {
-                showThankYou();
-            } else if (viewName === 'disqualify') {
-                showDisqualify();
-            }
-            
-            // Restart the rotation timer
-            restartAutoRotation();
-        }
-    </script>
-    
-    <style>
-        /* ============================================
-           MAIN NAVIGATION
-           ============================================ */
-        .main-nav {
-            display: none;
-        }
-
-        .nav-close {
-            display: none;
-        }
-
-        .nav-restore {
-            display: none;
-        }
-
-        .main-nav a {
-            color: #4CAF50;
-            text-decoration: none;
-            margin: 0 20px;
-            padding: 8px 16px;
-            border-radius: 25px;
-            background: rgba(76, 175, 80, 0.1);
-            transition: all 0.3s ease;
-            font-weight: 500;
-            border: 1px solid rgba(76, 175, 80, 0.3);
-        }
-
-        .main-nav a:hover {
-            background: rgba(76, 175, 80, 0.2);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
-        }
-
-        .main-nav a.current {
-            background: #4CAF50;
-            color: white;
-            font-weight: 600;
-            border-color: #4CAF50;
-        }
-
-        .nav-toggle {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-            border: 1px solid rgba(76, 175, 80, 0.3);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            margin-left: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-toggle:hover {
-            background: rgba(76, 175, 80, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .nav-close {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 0, 0, 0.8);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            font-size: 16px;
-            cursor: pointer;
-            z-index: 10002;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        .nav-close:hover {
-            background: rgba(255, 0, 0, 1);
-            transform: scale(1.1);
-        }
-
-        .nav-restore {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            z-index: 10001;
-            display: none;
-            box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .nav-restore:hover {
-            background: #45a049;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-        }
-
-        /* SERP iframe specific styling */
-        .serp-iframe {
-            transform: scale(0.45) !important;
-            margin-top: -650px !important;
-            height: 1200px !important;
-        }
-        
-        /* Mobile Navigation */
-        @media (max-width: 768px) {
-            .main-nav {
-                padding: 10px 5px;
-                font-size: 12px;
-            }
-            
-            .main-nav a {
-                margin: 0 8px;
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            padding-top: 0;
-            background: #f8f9fa;
-            margin: 0;
-            min-height: 100vh;
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-            transition: padding-top 0.3s ease;
-            /* Improve iOS scrolling performance */
-            -webkit-overflow-scrolling: touch;
-            overflow-x: hidden; /* Prevent horizontal body scroll */
-        }
-        
-        body.dev-nav-hidden {
-            padding-top: 0;
-        }
-
-        .page-title {
-            text-align: center;
-            margin-bottom: 30px;
-            margin-top: 40px;
-            padding: 0 20px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .page-title h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #333;
-            margin: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .path-button {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-            text-decoration: none;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-            align-self: center;
-            transform: translateY(4px);
-        }
-
-        .path-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.35);
-            background: linear-gradient(135deg, #45a049 0%, #4CAF50 100%);
-        }
-
-        /* Hide title on mobile */
-        @media (max-width: 768px) {
-            .page-title {
-                display: none;
-            }
-        }
-        /* Conference presentation mode */
-        .conference-mode {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #000;
-            color: white;
-            z-index: 20000;
-            display: none;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        
-        .conference-mode.active {
-            display: block;
-        }
-        
-        .conference-toggle {
-            position: fixed;
-            top: 50px;
-            right: 20px;
-            background: #333;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            z-index: 15000;
-            display: none; /* Hidden for now */
-        }
-        
-        .conference-toggle:hover {
-            background: #555;
-        }
-        
-        @media (max-width: 768px) {
-            .conference-toggle {
-                top: 45px;
-                right: 10px;
-                padding: 8px 12px;
-                font-size: 0.75rem;
-            }
-        }
-
-        .flow-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0px 20px 20px 20px; /* Removed top padding completely */
-        }
-
-        .flow-header {
-            text-align: center;
-            margin-bottom: 0px; /* Removed margin completely */
-            display: none; /* Hide the header completely */
-        }
-
-        .flow-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .flow-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .flow-stages {
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-            align-items: flex-start; /* Changed from stretch to flex-start */
-            flex-wrap: wrap;
-        }
-
-        .flow-stage {
-            flex: 1;
-            min-width: 350px;
-            max-width: 400px;
-            background: white;
-            border-radius: 20px;
-            padding: 5px 20px 5px 20px; /* Further reduced bottom padding to 5px */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stage-header {
-            text-align: center;
-            margin-bottom: 15px; /* Keep same margin below */
-            min-height: 50px; /* Slightly reduced */
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Center vertically */
-            align-items: center;
-            padding: 10px 0 20px 0; /* Less space above, more below */
-        }
-
-        .stage-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0px;
-            min-height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            line-height: 1.2;
-        }
-
-        /* Larger titles for stages 2 and 3 */
-        .flow-stage:nth-child(2) .stage-title,
-        .flow-stage:nth-child(3) .stage-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .stage-description {
-            display: none; /* Hide all descriptions */
-        }
-
-        /* Stage 1 Toggle Buttons */
-        .stage-toggle-buttons {
-            display: flex;
-            gap: 3px; /* Reduced from 5px */
-            margin-top: 10px;
-            margin-bottom: 0px;
-            flex-wrap: nowrap; /* Changed from wrap to nowrap */
-            justify-content: center;
-            width: 100%;
-        }
-
-        .toggle-btn {
-            padding: 4px 8px; /* Reduced padding */
-            border: 2px solid #e9ecef;
-            border-radius: 12px; /* Smaller radius */
-            background: #f8f9fa;
-            color: #495057;
-            font-size: 0.65rem; /* Smaller font */
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-height: 28px; /* Smaller height */
-            flex: 1; /* Make buttons flex to fit */
-            text-align: center;
-            white-space: nowrap; /* Prevent text wrapping */
-        }
-
-        /* iPhone 12 specific optimizations */
-        @media (max-width: 390px) and (min-width: 375px) {
-            .toggle-btn {
-                padding: 3px 6px; /* Even smaller padding for iPhone 12 */
-                font-size: 0.6rem; /* Smaller font for iPhone 12 */
-                min-height: 26px;
-            }
-            
-            .stage-toggle-buttons {
-                gap: 2px; /* Tighter gap for iPhone 12 */
-            }
-        }
-
-        .toggle-btn:hover {
-            border-color: #f5a623;
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .toggle-btn.active {
-            border-color: #f5a623;
-            background: #f5a623;
-            color: white;
-        }
-
-        /* Stage 1 Version Management */
-        .stage1-version {
-            position: static;
-        }
-
-        .stage1-version.active {
-            display: block;
-        }
-
-        /* Facebook Ad Mockup Styles */
-        .social-ad-mockup {
-            background: #f0f2f5;
-            padding: 0;
-            overflow-y: auto;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .facebook-ad {
-            background: white;
-            margin: 8px;
-            border-radius: 8px;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 700px; /* Even taller for much longer video */
-        }
-
-        .fb-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 16px; /* Smaller padding to maximize video space */
-            flex-shrink: 0;
-        }
-
-        .fb-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .fb-avatar img {
-            width: 50px; /* Larger avatar */
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        .fb-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .fb-name {
-            font-weight: 600;
-            font-size: 18px; /* Larger text */
-            color: #1c1e21;
-            line-height: 1.2;
-        }
-
-        .fb-sponsored {
-            font-size: 15px; /* Larger text */
-            color: #65676b;
-            line-height: 1.2;
-        }
-
-        .fb-library-id {
-            font-size: 13px;
-            color: #65676b;
-            line-height: 1.2;
-            margin-top: 2px;
-        }
-
-        .fb-menu {
-            color: #65676b;
-            font-size: 24px; /* Larger menu */
-            cursor: pointer;
-            padding: 12px;
-            border-radius: 50%;
-        }
-
-        .fb-menu:hover {
-            background: #f2f3f4;
-        }
-
-        .fb-content {
-            padding: 0 16px 12px; /* Minimal padding */
-            flex-shrink: 0;
-        }
-
-        .fb-text {
-            font-size: 15px; /* Smaller to save space */
-            line-height: 1.3;
-            color: #1c1e21;
-            margin: 0;
-        }
-
-        .fb-media {
-            position: relative;
-            flex: 1; /* Take all remaining space */
-            margin-bottom: 12px; /* Minimal margin */
-            min-height: 520px; /* Much taller video area */
-        }
-
-        .fb-video-container {
-            position: relative;
-            background: transparent !important;
-            height: 100% !important;
-            width: 100% !important;
-            min-height: 520px !important;
-        }
-
-        .fb-video-placeholder {
-            width: 100% !important;
-            height: 100% !important;
-            background: url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=600&h=800&fit=crop&crop=entropy') center/cover !important;
-            position: relative !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            min-height: 520px !important;
-        }
-
-        .fb-video-overlay {
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            background: rgba(0,0,0,0.2) !important;
-        }
-
-        .fb-play-button {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.2s;
-            padding-left: 4px; /* Offset triangle to appear more centered */
-        }
-
-        .fb-play-button:hover {
-            background: white;
-            transform: scale(1.05);
-        }
-
-        .solarflow-logo-overlay {
-            display: none;
-        }
-
-        .fb-video-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.3);
-        }
-
-        .fb-play-button {
-            width: 80px; /* Much larger play button */
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px; /* Larger play icon */
-            color: #333;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .fb-play-button:hover {
-            background: white;
-            transform: scale(1.05);
-        }
-
-        .solarflow-logo-overlay {
-            position: absolute;
-            top: 25px; /* More space from top */
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .solarflow-logo-bg {
-            background: #f5a623;
-            color: white;
-            padding: 12px 20px; /* Larger logo */
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 16px; /* Larger text */
-            text-align: center;
-            line-height: 1.2;
-        }
-
-        .fb-cta {
-            padding: 20px 16px; /* More padding */
-            border-top: 1px solid #e4e6ea;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: auto; /* Push to bottom */
-        }
-
-        .fb-cta-text {
-            flex: 1;
-        }
-
-        .fb-url {
-            font-size: 13px; /* Slightly larger */
-            color: #65676b;
-            text-transform: uppercase;
-            margin-bottom: 4px; /* More space */
-        }
-
-        .fb-headline {
-            font-size: 18px; /* Larger headline */
-            font-weight: 600;
-            color: #1c1e21;
-            margin-bottom: 4px; /* More space */
-            line-height: 1.2;
-        }
-
-        .fb-description {
-            font-size: 15px; /* Larger description */
-            color: #65676b;
-            line-height: 1.2;
-        }
-
-        .fb-learn-more {
-            background: #e4e6ea;
-            color: #65676b;
-            border: 1px solid #dadde1;
-            padding: 12px 20px; /* Larger button */
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 15px; /* Larger text */
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .fb-learn-more:hover {
-            background: #d8dadf;
-        }
-
-        .live-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 12px 20px;
-            background: #f5a623;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: background 0.2s;
-            min-height: 44px;
-            justify-content: center;
-        }
-
-        .live-link:hover {
-            background: #e0941f;
-        }
-
-        /* iPhone Frame - iPhone 14 Pro Max exact dimensions */
-        .phone-frame {
-            background: #1f1f1f;
-            border-radius: 35px;
-            padding: 8px;
-            margin: 5px auto; /* Minimal margin */
-            width: 300px;
-            height: 650px;
-            position: relative;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            border-radius: 27px;
-            overflow: hidden;
-            position: relative;
-            background: white;
-        }
-
-        .page-iframe {
-            width: 430px;
-            height: 932px;
-            border: none;
-            border-radius: 27px;
-            transform: scale(0.675);;
-            transform-origin: center center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -215px;
-            margin-top: -466px;
-        }
-
-        /* Key Terms Section */
-        .key-terms {
-            margin-top: 10px; /* Further reduced from 15px to 10px */
-            margin-bottom: 5px; /* Added small bottom margin to end container shortly after content */
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .terms-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 10px; /* Reduced from 20px to 10px */
-        }
-
-        .term-button {
-            padding: 8px 14px;
-            border: 2px solid #e9ecef;
-            border-radius: 20px;
-            background: #f8f9fa;
-            color: #495057;
-            font-size: 0.8rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-block;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .term-button:hover {
-            border-color: #f5a623;
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .term-button.thank-you { border-color: #28a745; color: #155724; }
-        .term-button.thank-you:hover { background: #d4edda; }
-
-        .term-button.content { border-color: #007bff; color: #004085; }
-        .term-button.content:hover { background: #cce7ff; }
-
-        .term-button.serp { border-color: #dc3545; color: #721c24; }
-        .term-button.serp:hover { background: #f8d7da; }
-
-        /* Flow Arrows - Redesigned */
-        .flow-arrow {
-            display: none; /* Hide arrows on desktop */
-            position: absolute;
-            top: 370px;
-            right: -35px;
-            width: 70px;
-            height: 40px;
-            background: linear-gradient(135deg, #f5a623, #e0941f);
-            border-radius: 25px;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.4rem;
-            font-weight: 600;
-            z-index: 10;
-            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .flow-arrow:before {
-            content: "→";
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 300;
-            font-size: 1.6rem;
-        }
-
-        .flow-arrow:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
-        }
-
-        .flow-stage:last-child .flow-arrow {
-            display: none;
-        }
-
-        /* Desktop: Hide scroll hints */
-        @media (min-width: 769px) {
-            .scroll-hint {
-                display: none !important;
-            }
-        }
-
-        /* Mobile Responsive - Horizontal Swipe Experience */
-        @media (max-width: 768px) {
-            /* Mobile-specific adjustment for SERP iframe */
-            .serp-iframe {
-                transform: scale(0.43) !important;
-                margin-top: -670px !important;
-                height: 1300px !important;
-            }
-            
-            // Force stage 1 to be visible first using order
-            .flow-stage:nth-child(1) {
-                order: 1;
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                min-width: 100vw !important;
-                width: 100vw !important;
-                left: 0 !important;
-                position: relative !important;
-                transform: translateX(0px) !important;
-            }
-            .flow-stage:nth-child(2) {
-                order: 2;
-            }
-            .flow-stage:nth-child(3) {
-                order: 3;
-            }
-            
-            .flow-container {
-                padding: 0;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-            }
-            
-            .flow-stages {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                overflow-y: hidden;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                width: 100vw;
-                height: calc(100vh - 120px);
-                scroll-behavior: smooth;
-            }
-            
-            .flow-stage {
-                min-width: 100vw;
-                width: 100vw;
-                flex: 0 0 100vw;
-                flex-shrink: 0;
-                scroll-snap-align: start;
-                height: 100%;
-                overflow-y: auto;
-            }
-        }
-        @media (max-width: 768px) {
-            .flow-container {
-                padding: 0px 0 0 0; /* Removed 20px top padding */
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-            }
-            
-            .flow-header {
-                margin-bottom: 20px;
-                padding: 0 20px;
-                flex-shrink: 0;
-            }
-            
-            .flow-title {
-                font-size: 1.8rem;
-            }
-            
-            .flow-subtitle {
-                font-size: 1rem;
-                padding: 0;
-            }
-            
-            /* Show scroll hints on mobile for stages 1 and 2 */
-            .flow-stage:nth-child(1) .scroll-hint,
-            .flow-stage:nth-child(2) .scroll-hint {
-                display: none; /* Hide the old arrow hints */
-            }
-            
-            .flow-stage:nth-child(3) .scroll-hint {
-                display: none !important;
-            }
-            
-            /* Horizontal scroll container - FIXED */
-            .flow-stages {
-                display: flex !important;
-                flex-direction: row !important;
-                flex-wrap: nowrap !important;
-                overflow-x: scroll !important;
-                overflow-y: hidden !important;
-                scroll-snap-type: x mandatory !important;
-                -webkit-overflow-scrolling: touch !important;
-                width: 100vw !important;
-                height: calc(100vh - 80px) !important; /* Reduced from 120px to give more space */
-                scroll-behavior: smooth !important;
-                /* Hardware acceleration for smoother scrolling */
-                transform: translateZ(0) !important;
-                will-change: scroll-position !important;
-                /* Highlight scroll container */
-                border-top: 3px solid #f5a623 !important;
-                border-bottom: 3px solid #f5a623 !important;
-                touch-action: pan-x pan-y !important; /* Allow both horizontal and vertical panning */
-            }
-            
-            .flow-stage {
-                min-width: 100vw !important;
-                width: 100vw !important;
-                max-width: 100vw !important;
-                padding: 10px 20px 20px 20px !important; /* Reduced top padding */
-                margin: 0 !important;
-                flex-shrink: 0 !important;
-                flex-grow: 0 !important;
-                scroll-snap-align: start !important;
-                display: flex !important;
-                flex-direction: column !important;
-                height: 100%;
-                box-sizing: border-box;
-                background: white;
-                border-radius: 0;
-                box-shadow: none;
-                border-right: 3px solid #f5a623;
-                overflow-y: auto !important; /* Ensure vertical scrolling within each stage */
-                -webkit-overflow-scrolling: touch !important; /* Smooth scrolling on iOS */
-                scroll-behavior: smooth !important; /* Smooth scrolling behavior */
-                position: relative;
-            }
-            
-            .stage-header {
-                margin-bottom: 10px; /* Keep same margin below */
-                flex-shrink: 0;
-                min-height: 40px; /* Slightly reduced */
-                display: flex;
-                flex-direction: column;
-                justify-content: center; /* Center vertically */
-                align-items: center;
-                padding: 8px 0 15px 0; /* Less space above, more below */
-            }
-            
-            .stage-title {
-                font-size: 1.2rem;
-                margin-bottom: 0px;
-                min-height: 25px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                line-height: 1.2;
-            }
-
-            /* Larger titles for stages 2 and 3 on mobile */
-            .flow-stage:nth-child(2) .stage-title,
-            .flow-stage:nth-child(3) .stage-title {
-                font-size: 1.4rem; /* Increased from 1.2rem for better readability */
-                font-weight: 700;
-                white-space: nowrap; /* Prevent line breaks */
-                overflow: hidden;
-                text-overflow: ellipsis; /* Add ... if text still too long */
-                max-width: 100%; /* Ensure it doesn't exceed container */
-                letter-spacing: -0.4px; /* Slightly tighter spacing to help fit */
-            }
-            
-            .stage-description {
-                display: none; /* Hide all descriptions on mobile too */
-            }
-            
-            .phone-frame {
-                width: 300px;
-                height: 650px;
-                padding: 8px;
-                margin: 5px auto 15px auto; /* Added bottom margin */
-                flex-shrink: 0;
-                position: relative;
-                top: 0;
-            }
-            
-            .page-iframe {
-                width: 430px;
-                height: 932px;
-                transform: scale(0.69);;
-                transform-origin: center center;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                margin-left: -215px;
-                margin-top: -466px;
-            }
-            
-            /* Remove vertical flow arrows, add horizontal indicators */
-            .flow-arrow {
-                display: none;
-            }
-            
-            .key-terms {
-                margin-top: 10px; /* Reduced */
-                flex: 0 0 auto; /* Don't stretch, size to content */
-                overflow-y: visible; /* Remove scroll constraint */
-                min-height: auto; /* Remove min-height constraint */
-                padding-bottom: 60px; /* Add padding to account for scroll indicators */
-                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-                margin-bottom: 8px;
-            }
-            
-            .terms-grid {
-                gap: 4px;
-                margin-bottom: 10px;
-            }
-            
-            .term-button {
-                padding: 4px 8px;
-                font-size: 0.7rem;
-            }
-            
-            /* Mobile Scrolling Hints - Stage-specific */
-            .scroll-hint {
-                position: absolute;
-                top: 45%; /* Moved up to middle of phone frame */
-                right: 20px;
-                transform: translateY(-50%);
-                background: rgba(245, 166, 35, 0.9);
-                color: white;
-                padding: 8px 12px;
-                border-radius: 25px;
-                font-size: 1.2rem;
-                font-weight: 300;
-                z-index: 1000;
-                animation: slideHint 3s ease-in-out infinite;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                cursor: pointer;
-                user-select: none;
-                -webkit-user-select: none;
-                -webkit-tap-highlight-color: transparent;
-                transition: all 0.3s ease;
-                display: none; /* Hide on desktop */
-            }
-            
-            .scroll-hint:hover {
-                background: rgba(245, 166, 35, 1);
-                transform: translateY(-50%) scale(1.1);
-            }
-            
-            .scroll-hint:active {
-                transform: translateY(-50%) scale(0.95);
-                background: rgba(224, 148, 31, 1);
-            }
-            
-            .scroll-hint.left {
-                left: 20px;
-                right: auto;
-            }
-            
-            .scroll-hint.right {
-                right: 20px;
-                left: auto;
-            }
-            
-            @keyframes slideHint {
-                0%, 100% { opacity: 0.7; transform: translateY(-50%) translateX(0); }
-                50% { opacity: 1; transform: translateY(-50%) translateX(10px); }
-            }
-            
-            /* Hide hints after user starts scrolling */
-            .scroll-hint.hidden {
-                display: none;
-            }
-            
-            /* Hide scroll hints on all stages for desktop */
-            .flow-stage .scroll-hint {
-                display: none !important;
-            }
-            
-            .live-link {
-                padding: 6px 12px;
-                font-size: 0.75rem;
-            }
-            
-            /* Scroll indicators */
-            .scroll-indicators {
-                display: flex;
-                justify-content: center;
-                gap: 8px;
-                position: fixed;
-                bottom: 10px; /* Reduced from 20px */
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(255,255,255,0.95);
-                border-radius: 20px;
-                padding: 8px 16px; /* Reduced padding */
-                backdrop-filter: blur(10px);
-                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-                z-index: 1000;
-            }
-            
-            .scroll-dot {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: #ccc;
-                transition: all 0.3s ease;
-                cursor: pointer;
-                position: relative;
-                z-index: 1001;
-            }
-            
-            .scroll-dot.active {
-                background: #f5a623;
-                transform: scale(1.2);
-            }
-            
-            .scroll-dot:hover {
-                background: #f5a623;
-                opacity: 0.7;
-            }
-        }
-
-        /* Extra small phones */
-        @media (max-width: 480px) {
-            .serp-iframe {
-                transform: scale(0.41) !important;
-                margin-top: -690px !important;
-                height: 1400px !important;
-            }
-            
-            .flow-title {
-                font-size: 1.6rem;
-            }
-            
-            .flow-subtitle {
-                font-size: 0.9rem;
-            }
-            
-            .phone-frame {
-                width: 280px;
-                height: 600px;
-            }
-            
-            .page-iframe {
-                transform: scale(0.62);;
-            }
-            
-            .flow-stage {
-                padding: 5px 10px 80px 10px; /* Increased bottom padding from 15px to 80px for scroll indicators */
-            }
-            
-            .term-button {
-                padding: 4px 6px;
-                font-size: 0.65rem;
-            }
-            
-            /* Further reduce title size for very small phones */
-            .flow-stage:nth-child(2) .stage-title,
-            .flow-stage:nth-child(3) .stage-title {
-                font-size: 1.15rem; /* Increased from 1.0rem, still fits on small phones */
-                letter-spacing: -0.4px;
-            }
-        }
-
-        /* Specific optimizations for iPhone 12 Pro and similar sizes (390px width) */
-        @media (max-width: 390px) and (min-width: 375px) {
-            .flow-stage:nth-child(2) .stage-title,
-            .flow-stage:nth-child(3) .stage-title {
-                font-size: 1.3rem; /* Increased from 1.1rem for iPhone 12 Pro */
-                letter-spacing: -0.6px; /* Tighter letter spacing to help fit */
-            }
-        }
-
-        /* Linktree Mockup Styles - Exact match to screenshot */
-        .linktree-mockup {
-            background: linear-gradient(180deg, #7dd3fc 0%, #06b6d4 100%) !important;
-            padding: 0 !important;
-            overflow-y: auto !important;
-            height: 100% !important;
-            display: flex !important;
-            flex-direction: column !important;
-            width: 100% !important;
-            position: relative !important;
-        }
-
-        .linktree-container {
-            padding: 40px 30px 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .linktree-header {
-            text-align: center;
-            margin-bottom: 32px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .linktree-avatar {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .linktree-name {
-            color: #1a1a1a !important;
-            font-size: 22px !important;
-            font-weight: bold !important;
-            margin: 0 0 12px 0 !important;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-            text-align: center !important;
-            line-height: 1.2 !important;
-        }
-
-        .linktree-bio {
-            color: #4a5568 !important;
-            font-size: 15px !important;
-            margin: 0 !important;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-            font-weight: 400 !important;
-            line-height: 1.4 !important;
-            text-align: center !important;
-            max-width: 250px !important;
-        }
-
-        .linktree-links {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 24px;
-            max-width: 280px;
-        }
-
-        .linktree-link {
-            background: #f7fafc !important;
-            color: #2d3748 !important;
-            text-decoration: none !important;
-            padding: 14px 18px !important;
-            border-radius: 25px !important;
-            text-align: left !important;
-            font-weight: 600 !important;
-            font-size: 14px !important;
-            transition: all 0.2s ease !important;
-            border: 1px solid #e2e8f0 !important;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            min-height: 48px !important;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        .linktree-link:hover {
-            transform: translateY(-1px) !important;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-            background: #ffffff !important;
-        }
-
-        .content-page-link:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4) !important;
-        }
-
-        /* Section headers styling */
-        .section-header {
-            background: #4a90e2 !important;
-            color: white !important;
-            padding: 10px 20px !important;
-            border-radius: 25px !important;
-            text-align: center !important;
-            font-weight: bold !important;
-            font-size: 13px !important;
-            margin: 8px 0 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-        }
-
-        .social-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Pulse animation for click indicator */
-        @keyframes pulse {
-            0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.05); }
-        }
-    </style>
-</head>
-<body>
-    <div class="flow-container">
-
-        <!-- Page Title (Desktop Only) -->
-        <div class="page-title">
-            <h1>Flow Overview</h1>
-            <a href="index.html" class="path-button">Path</a>
-        </div>
-
-        <div class="flow-stages">
-            <!-- Stage 1: Thank You Page -->
-            <div class="flow-stage">
-                <!-- Mobile Scrolling Hint -->
-                <div class="scroll-hint right">→</div>
-                
-                <div class="stage-header">
-                    <h2 class="stage-title" style="display: none;">Stage 1 Options</h2> <!-- Hidden title -->
-                    
-                    <!-- Stage 1 Toggle Buttons -->
-                    <div class="stage-toggle-buttons">
-                        <button class="toggle-btn active" onclick="showSocial()">Socials</button>
-                        <button class="toggle-btn" onclick="showThankYou()">Thank You Page</button>
-                        <button class="toggle-btn" onclick="showDisqualify()">Disqualifying Offer</button>
-                        <button class="toggle-btn" onclick="showLinktree()">Linktree</button>
-                    </div>
+    <div class="container solar-flow-section" id="solarflow">
+        <div class="flow-section active" style="min-height: 100vh;"> 
+            <div class="flow-container" style="background: white;">
+                <div class="page-title">
+                    <h1>SolarFlow Demo</h1>
+                    <a href="#" class="path-button">Flow Demo</a>
                 </div>
-
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <!-- Main iframe for Thank You and Disqualify pages -->
-                        <iframe 
-                            id="stage1-iframe"
-                            src="about:blank" 
-                            class="page-iframe"
-                            title="Stage 1 Content"
-                            style="display: none;">
-                        </iframe>
-                        
-                        <!-- Social mockup div (shows by default) -->
-                        <div id="stage1-social-div" class="page-iframe social-ad-mockup" style="display: block;">
-                            <!-- Facebook Ad Mockup -->
-                            <div class="facebook-ad">
-                                <div class="fb-header">
-                                    <div class="fb-profile">
-                                        <div class="fb-avatar">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNENBRjUwIi8+CjxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZjVhNjIzIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRhOTBlMiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxjaXJjbGUgY3g9IjI1IiBjeT0iMjUiIHI9IjI1IiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzOCIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRkZENzAwIi8+Cjx0ZXh0IHg9IjI1IiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNGPC90ZXh0Pgo8L3N2Zz4=" alt="SolarFlow" />
-                                        </div>
-                                        <div class="fb-info">
-                                            <div class="fb-name">SolarFlow</div>
-                                            <div class="fb-sponsored">Sponsored</div>
-                                            <div class="fb-library-id">Library ID: 418984130123537</div>
+                
+                <div class="flow-stages" style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;">
+                    
+                    <div class="flow-stage" style="min-width: 350px; max-width: 400px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <div class="stage-header">
+                            <h2 class="stage-title" id="stage1-title">Ad on Socials</h2>
+                            <div class="stage-toggle-buttons">
+                                <button class="toggle-btn active" onclick="showSolarView('social', this)">Socials</button>
+                                <button class="toggle-btn" onclick="showSolarView('thankyou', this)">Thank You Page</button>
+                                <button class="toggle-btn" onclick="showSolarView('disqualify', this)">Disqualifying Offer</button>
+                                <button class="toggle-btn" onclick="showSolarView('linktree', this)">Linktree</button>
+                            </div>
+                        </div>
+    
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div id="solarflow-content-area" class="page-iframe" style="position: static; width: 100%; height: 100%; transform: scale(1); margin: 0; background: #f0f2f5; display: block; overflow: hidden;">
+                                    <div id="social-mockup" class="social-ad-mockup" style="display: block; width: 100%; height: 100%;">
+                                        <div class="facebook-ad">
+                                             <div class="fb-header">
+                                                <div class="fb-profile">
+                                                    <div class="fb-avatar">
+                                                        
+                                                    </div>
+                                                    <div class="fb-info">
+                                                        <div class="fb-name">SolarFlow</div>
+                                                        <div class="fb-sponsored">Sponsored</div>
+                                                    </div>
+                                                </div>
+                                                <div class="fb-menu">⋯</div>
+                                            </div>
+                                            <div class="fb-content"><p class="fb-text">Thinking about solar for your home? Learn about the potential benefits...</p></div>
+                                            <div class="fb-media" style="background: #ccc; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+                                                
+                                            </div>
+                                            <div class="fb-cta">
+                                                <div class="fb-cta-text">
+                                                    <div class="fb-headline">Learn How Solar Energy Reduces Costs and Boosts Home Value</div>
+                                                </div>
+                                                <button class="fb-learn-more">Learn More</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="fb-menu">⋯</div>
-                                </div>
-                                
-                                <div class="fb-content">
-                                    <p class="fb-text">Thinking about solar for your home? Learn about the potential benefits and see if solar might be a good fit for your situation. Every home is different - find out what options could work for you.</p>
-                                </div>
-                                
-                                <div class="fb-media">
-                                    <div class="fb-video-container">
-                                        <div class="fb-video-placeholder">
-                                            <div class="fb-video-overlay">
-                                                <div class="fb-play-button">▶</div>
+                                    <div id="thankyou-mockup" style="display: none; padding: 50px; text-align: center; background: linear-gradient(180deg, #d4edda 0%, #c3e6cb 100%); height: 100%;">
+                                        <h2 style="color: #155724;">Thank You!</h2><p style="color: #155724; margin-top: 20px;">Your solar eligibility is confirmed. Now read our educational article.</p>
+                                        <button style="background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 20px; margin-top: 30px;">Read Article</button>
+                                    </div>
+                                    <div id="disqualify-mockup" style="display: none; padding: 50px; text-align: center; background: linear-gradient(180deg, #f8d7da 0%, #f5c6cb 100%); height: 100%;">
+                                        <h2 style="color: #721c24;">Sorry!</h2><p style="color: #721c24; margin-top: 20px;">You did not qualify for a quote. Read this content instead to learn more.</p>
+                                        <button style="background: #dc3545; color: white; padding: 10px 20px; border: none; border-radius: 20px; margin-top: 30px;">Educational Content</button>
+                                    </div>
+                                    <div id="linktree-mockup" class="linktree-mockup" style="display: none; width: 100%; height: 100%;">
+                                        <div class="linktree-container">
+                                            <div class="linktree-header">
+                                                
+                                                <div class="linktree-name">Solar Guru</div>
+                                                <div class="linktree-bio">Eco-enthusiast showing you how to save with clean energy!</div>
+                                            </div>
+                                            <div class="linktree-links">
+                                                <div class="linktree-link content-page-link" style="background: #f5a623 !important; color: white !important;">How Solar Energy Reduces Costs (Content Link)</div>
+                                                <div class="linktree-link">Get a Free Solar Quote</div>
+                                                <div class="linktree-link">Watch our latest video</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="fb-cta">
-                                    <div class="fb-cta-text">
-                                        <div class="fb-url">HTTPS://WWW.SOLARFLOW.XYZ/</div>
-                                        <div class="fb-headline">Learn How Solar Energy Reduces Costs and Boosts Home Value</div>
-                                        <div class="fb-description">Get information and see what might work</div>
+                            </div>
+                        </div>
+    
+                        <div class="key-terms">
+                            <h3 class="section-title" id="stage1-description-title" style="margin-bottom: 15px;">Option Description</h3>
+                            <div class="option-description" id="stage1-description-text" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #f5a623; margin-bottom: 15px;">
+                                <p style="margin: 0; color: #555; line-height: 1.6;">Learn More button links out to content page.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="flow-stage" style="min-width: 350px; max-width: 400px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <div class="stage-header">
+                            <h2 class="stage-title">Content Page with Keyword Block</h2>
+                        </div>
+                        
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div id="content-page-mockup" style="width: 100%; height: 100%; padding: 20px; overflow-y: auto;">
+                                    <h1 style="font-size: 20px; margin-bottom: 15px;">How Solar Energy Reduces Costs and Boosts Home Value</h1>
+                                    <p style="font-size: 14px; margin-bottom: 15px;">Installing solar panels drastically cuts down on monthly electricity bills, providing significant long-term savings. The initial investment often pays for itself within a few years through reduced utility costs.</p>
+                                    <div class="related-searches" style="margin-top: 20px; border: none; box-shadow: none; padding: 0;">
+                                        <div class="search-title">Related Searches</div>
+                                        <div class="search-chip" style="color: white; background: #5865f2;">Solar Panel Installation</div>
+                                        <div class="search-chip" style="color: white; background: #5865f2;">Residential Solar Panels Near Me</div>
+                                        <div class="search-chip" style="color: white; background: #5865f2;">Solar Panel Energy Savings</div>
                                     </div>
-                                    <button class="fb-learn-more">Learn More</button>
+                                    <p style="font-size: 14px; margin-top: 15px;">Beyond savings, solar installations are shown to increase a home's market value, often attracting buyers interested in sustainable living and lower operating costs.</p>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Linktree mockup div (hidden by default) -->
-<div id="stage1-linktree-div" class="page-iframe" style="display: none !important; visibility: hidden !important; width: 430px; height: 932px; border: none; border-radius: 27px; transform: scale(0.725); transform-origin: center center; position: absolute; top: 50%; left: 50%; margin-left: -215px; margin-top: -466px;" 
-                             onclick="handleLinktreeClick()" 
-                             title="Click to open Nation.com solar article">
-                            <img src="Linktree-pic.png" 
-                                 alt="Solar Linktree Screenshot" 
-                                 style="width: 100%; height: 100%; object-fit: cover; object-position: center center; pointer-events: none;"
-                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding: 20px; text-align: center; color: #666;\'>Image not found: Linktree-pic.png</div>'" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="key-terms">
-                    <h3 class="section-title" id="stage1-title" style="margin-bottom: 15px;">Social Advertisement</h3>
-                    
-                    <div class="option-description" id="stage1-description" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #f5a623; margin-bottom: 15px;">
-                        <p style="margin: 0; color: #555; line-height: 1.6;">Learn More button links out to content page.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stage 2: Content Page -->
-            <div class="flow-stage">
-                <!-- Mobile Scrolling Hint -->
-                <div class="scroll-hint right">→</div>
-                
-                <div class="stage-header">
-                    <h2 class="stage-title">Content Page with Keyword Block</h2>
-                    <p class="stage-description">
-                        User is shown the Keyword Block that contains search terms on a content page.
-                    </p>
-                </div>
-
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <iframe 
-                            src="rsoc-page.html?hideGlossary=true&hideDevNav=true" 
-                            class="page-iframe"
-                            title="RSOC Content Page">
-                        </iframe>
-                    </div>
-                </div>
-
-                <div class="key-terms">
-                    <h3 class="section-title">Keyword Block</h3>
-                    
-                    <!-- Description above the block -->
-                    <div class="option-description" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #5865f2; margin-bottom: 15px;">
-                        <p style="margin: 0; color: #555; line-height: 1.6;">An iframe containing search terms (ForceKeys). Clicks on one of these search terms is shown on the next page, the SERP. These are the related searches on content: RSOC.</p>
-                    </div>
-                    
-                    <!-- Keyword blocks without container - CENTERED -->
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                        <div class="keyword-block-header" style="font-size: 0.7rem; color: #666; font-weight: normal; margin-bottom: 8px; width: 280px; text-align: left;">Related searches</div>
-                        <div class="keyword-search-terms" style="display: flex; flex-direction: column; gap: 6px; width: 280px;">
-                            <div class="keyword-search-term" style="height: 40px; width: 100%; display: flex; background: #5865f2; border-radius: 4px; padding: 8px 12px; cursor: pointer; transition: all 0.3s ease; align-items: center; justify-content: flex-start; font-size: 0.8rem; font-weight: 600; color: white; border: none; font-family: 'Source Serif Pro', Book Antiqua, Palatino, serif;" 
-                                 onmouseover="this.style.background='#f5a623'; this.style.transform='translateY(-1px)'" 
-                                 onmouseout="this.style.background='#5865f2'; this.style.transform='translateY(0)'">
-                                <span style="margin-right: 8px; font-size: 1.1rem;">›</span>
-                                <span style="flex: 1; text-align: left;">Solar Panel Installation</span>
-                                <span style="margin-left: auto; font-size: 1.1rem;">›</span>
-                            </div>
-                            <div class="keyword-search-term" style="height: 40px; width: 100%; display: flex; background: #5865f2; border-radius: 4px; padding: 8px 12px; cursor: pointer; transition: all 0.3s ease; align-items: center; justify-content: flex-start; font-size: 0.8rem; font-weight: 600; color: white; border: none; font-family: 'Source Serif Pro', Book Antiqua, Palatino, serif;" 
-                                 onmouseover="this.style.background='#f5a623'; this.style.transform='translateY(-1px)'" 
-                                 onmouseout="this.style.background='#5865f2'; this.style.transform='translateY(0)'">
-                                <span style="margin-right: 8px; font-size: 1.1rem;">›</span>
-                                <span style="flex: 1; text-align: left;">Residential Solar Panels Near Me</span>
-                                <span style="margin-left: auto; font-size: 1.1rem;">›</span>
-                            </div>
-                            <div class="keyword-search-term" style="height: 40px; width: 100%; display: flex; background: #5865f2; border-radius: 4px; padding: 8px 12px; cursor: pointer; transition: all 0.3s ease; align-items: center; justify-content: flex-start; font-size: 0.8rem; font-weight: 600; color: white; border: none; font-family: 'Source Serif Pro', Book Antiqua, Palatino, serif;" 
-                                 onmouseover="this.style.background='#f5a623'; this.style.transform='translateY(-1px)'" 
-                                 onmouseout="this.style.background='#5865f2'; this.style.transform='translateY(0)'">
-                                <span style="margin-right: 8px; font-size: 1.1rem;">›</span>
-                                <span style="flex: 1; text-align: left;">Solar Panel Energy Savings</span>
-                                <span style="margin-left: auto; font-size: 1.1rem;">›</span>
+    
+                        <div class="key-terms">
+                            <h3 class="section-title">Keyword Block (RSOC)</h3>
+                            <div class="option-description" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #5865f2; margin-bottom: 15px;">
+                                <p style="margin: 0; color: #555; line-height: 1.6;">User clicks a keyword (e.g., "Residential Solar Panels Near Me") to navigate to the search results page (SERP).</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- ForceKeys Section -->
-                    <div style="margin-top: 25px;">
-                        <h3 class="section-title">ForceKeys</h3>
-                        <div class="option-description" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #0693e3; margin-bottom: 15px;">
-                            <p style="margin: 0; color: #555; line-height: 1.6;">Optimized search terms / keywords. These are passed in the URL and are requested to be shown by Google.</p>
+    
+                    <div class="flow-stage" style="min-width: 350px; max-width: 400px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <div class="stage-header">
+                            <h2 class="stage-title">SERP (Search Engine Results Page)</h2>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stage 3: SERP Page -->
-            <div class="flow-stage">
-                <div class="stage-header">
-                    <h2 class="stage-title">SERP (Search Engine Results Page)</h2>
-                    <p class="stage-description">
-                        Search Engine Results Page with monetized clicks to advertiser with "Visit Website" button
-                    </p>
-                </div>
-
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <iframe 
-                            src="serp.html?hideDevNav=true" 
-                            class="page-iframe"
-                            title="Nation.com SERP">
-                        </iframe>
-                    </div>
-                </div>
-
-                <div class="key-terms">
-                    <h3 class="section-title">Monetization Event</h3>
-                    
-                    <!-- Description below the button -->
-                    <div class="option-description" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #0e50c4; margin-bottom: 15px;">
-                        <p style="margin: 0; color: #555; line-height: 1.6;">A user clicks on the <button class="serp-visit-btn" style="-webkit-text-size-adjust: 100%; font-family: arial, sans-serif; text-decoration: none; text-transform: none; display: inline-flex; box-sizing: border-box; overflow: hidden; font-weight: 700; background-color: #0e50c4; border-radius: 20px; border: 2px solid #dadce0; font-size: 14px; line-height: 20px; max-height: 32px; margin: 0 4px; padding: 6px 12px; color: #ffffff; flex-direction: row; justify-content: center; align-items: center; cursor: pointer; transition: all 0.1s ease; vertical-align: middle;" onmouseover="this.style.backgroundColor='#1a5bcd'" onmouseout="this.style.backgroundColor='#0e50c4'">Visit Website</button> button. This is the monetization event where we calculate RPC. User is taken to the advertiser's page.</p>
+    
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div id="serp-mockup" class="serp solar phone-content" style="background: linear-gradient(180deg, #ffeaa7 0%, #fdcb6e 100%); height: 100%;">
+                                    <div class="search-bar">🔍 Residential Solar Panels Near Me</div>
+                                    
+                                    <div class="serp-result">
+                                        <div class="sponsored-badge">Sponsored</div>
+                                        <div class="result-url">nation.com</div>
+                                        <div class="result-title">Get a Free Solar Quote for Your Home</div>
+                                        <div class="result-description">See how much you can save with a top-rated solar installer near you. Quick & free online check.</div>
+                                        <button class="visit-button">Visit Website</button>
+                                    </div>
+    
+                                    <div class="serp-result">
+                                        <div class="result-url">solarenergycorp.com</div>
+                                        <div class="result-title">Top Solar Panel Installers 2024</div>
+                                        <div class="result-description">Compare local companies and find the best fit. Read customer reviews.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="key-terms">
+                            <h3 class="section-title">Monetization Event</h3>
+                            <div class="option-description" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #0e50c4; margin-bottom: 15px;">
+                                <p style="margin: 0; color: #555; line-height: 1.6;">A user clicks on the <strong>Visit Website</strong> button. This is the monetization event (RPC).</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Mobile Scroll Indicators -->
-    <div class="scroll-indicators" id="scrollIndicators">
-        <div class="scroll-dot active" data-stage="0" onclick="scrollToStage(0)"></div>
-        <div class="scroll-dot" data-stage="1" onclick="scrollToStage(1)"></div>
-        <div class="scroll-dot" data-stage="2" onclick="scrollToStage(2)"></div>
+    
+    <div class="footer">
+        <h2>Ready to Combine & Publish?</h2>
+        <p>Follow the steps below to make this a live page on GitHub!</p>
     </div>
 
     <script>
-        // Helper function to scroll to a specific stage
-        function scrollToStage(stageIndex) {
-            const flowStages = document.querySelector('.flow-stages');
-            const scrollDots = document.querySelectorAll('.scroll-dot');
-            
-            if (flowStages) {
-                // Calculate position
-                const targetScroll = window.innerWidth * stageIndex;
-                
-                // Scroll to target stage
-                flowStages.scrollTo({
-                    left: targetScroll,
-                    behavior: 'smooth'
-                });
-                
-                // Force scroll position after animation
-                setTimeout(() => {
-                    flowStages.scrollLeft = targetScroll;
-                    
-                    // Update active state on dots
-                    scrollDots.forEach((dot, i) => {
-                        dot.classList.toggle('active', i === stageIndex);
-                    });
-                    
-                    console.log(`Scrolled to stage ${stageIndex + 1}`);
-                }, 300);
-            }
-        }
-        // Make sure stages are scrollable on mobile
-        window.addEventListener('load', function() {
-            // Force scrollable container on mobile
-            if (window.innerWidth <= 768) {
-                const flowStages = document.querySelector('.flow-stages');
-                
-                if (flowStages) {
-                    // Force scrollability with inline styles
-                    flowStages.style.display = 'flex';
-                    flowStages.style.flexDirection = 'row';
-                    flowStages.style.flexWrap = 'nowrap';
-                    flowStages.style.overflowX = 'scroll';
-                    flowStages.style.overflowY = 'hidden';
-                    flowStages.style.scrollSnapType = 'x mandatory';
-                    flowStages.style.WebkitOverflowScrolling = 'touch';
-                    flowStages.style.width = '100vw';
-                    
-                    // Set each stage to be full width
-                    const stages = flowStages.querySelectorAll('.flow-stage');
-                    stages.forEach(stage => {
-                        stage.style.minWidth = '100vw';
-                        stage.style.width = '100vw';
-                        stage.style.flex = '0 0 100vw';
-                        stage.style.flexShrink = '0';
-                    });
-                    
-                    // CRITICAL: Force reset to stage 1
-                    setTimeout(() => {
-                        console.log("Forcing scroll to stage 1");
-                        flowStages.scrollLeft = 0;
-                        
-                        // HOTFIX: Force scroll to negative position to compensate
-                        setTimeout(() => {
-                            if (flowStages.scrollLeft !== 0) {
-                                flowStages.scrollLeft = -window.innerWidth;
-                                setTimeout(() => flowStages.scrollLeft = 0, 50);
-                            }
-                        }, 100);
-                        
-                        // Update scroll dot indicators
-                        const scrollDots = document.querySelectorAll('.scroll-dot');
-                        scrollDots.forEach((dot, index) => {
-                            dot.classList.toggle('active', index === 0);
-                        });
-                        
-                        // Set up scroll listener
-                        flowStages.addEventListener('scroll', function() {
-                            const scrollLeft = flowStages.scrollLeft;
-                            const stageWidth = flowStages.clientWidth;
-                            const currentStage = Math.round(scrollLeft / stageWidth);
-                            
-                            console.log(`Scrolled to position ${scrollLeft}, stage ${currentStage}`);
-                            
-                            scrollDots.forEach((dot, index) => {
-                                dot.classList.toggle('active', index === currentStage);
-                            });
-                        });
-                    }, 200);
-                    
-                    // Add stronger scroll reset on dots
-                    const scrollDots = document.querySelectorAll('.scroll-dot');
-                    scrollDots.forEach((dot, index) => {
-                        dot.addEventListener('click', function() {
-                            const targetScroll = index * window.innerWidth;
-                            console.log(`Dot clicked: ${index}, scrolling to ${targetScroll}`);
-                            flowStages.scrollTo({
-                                left: targetScroll,
-                                behavior: 'smooth'
-                            });
-                            
-                            // Update active state
-                            scrollDots.forEach((d, i) => {
-                                d.classList.toggle('active', i === index);
-                            });
-                        });
-                    });
-                    
-                    console.log("Mobile scrolling enabled - refresh to see changes");
-                }
-            }
-        });
-        
-        // THREE SIMPLE FUNCTIONS - GLOBAL SCOPE
-        function showSocial() {
-            document.getElementById('stage1-iframe').style.display = 'none';
-            document.getElementById('stage1-social-div').style.display = 'block';
-            
-            // Update buttons
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[onclick="showSocial()"]').classList.add('active');
-        }
-        
-        function showThankYou() {
-            console.log('Showing thank you page');
-            document.getElementById('stage1-social-div').style.display = 'none';
-            document.getElementById('stage1-iframe').style.display = 'block';
-            document.getElementById('stage1-iframe').src = 'flow.html?step=6&hideDevNav=true';
-            
-            // Update buttons
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[onclick="showThankYou()"]').classList.add('active');
-        }
-        
-        function showDisqualify() {
-            console.log('Showing disqualify page');
-            document.getElementById('stage1-social-div').style.display = 'none';
-            document.getElementById('stage1-iframe').style.display = 'block';
-            document.getElementById('stage1-iframe').src = 'flow.html?step=4&autoSelect=mostly-shade&showPopup=true&hideDevNav=true';
-            
-            // Update buttons
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[onclick="showDisqualify()"]').classList.add('active');
-        }
-
-        // SUPER SIMPLE - Just switch what's in the iPhone frame - GLOBAL FUNCTION
-        function loadStage1(version) {
-            console.log(`🔴 BUTTON CLICKED! Switching to: ${version}`);
-            alert(`Button clicked: ${version}`); // Visual confirmation
-            
-            const iframe = document.getElementById('stage1-iframe');
-            const socialDiv = document.getElementById('stage1-social-div');
-            
-            console.log('iframe:', iframe);
-            console.log('socialDiv:', socialDiv);
-            
-            // Update button colors
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            
-            if (version === 'social') {
-                // Show social ad
-                iframe.style.display = 'none';
-                socialDiv.style.display = 'block';
-                document.querySelector('[onclick="loadStage1(\'social\')"]').classList.add('active');
-                console.log('✅ Showing social');
-                
-            } else if (version === 'thankyou') {
-                // Show thank you page
-                socialDiv.style.display = 'none';
-                iframe.style.display = 'block';
-                iframe.src = 'flow.html?step=6&hideDevNav=true';
-                document.querySelector('[onclick="loadStage1(\'thankyou\')"]').classList.add('active');
-                console.log('✅ Loading thank you page...');
-                
-            } else if (version === 'disqualify') {
-                // Show disqualifying offer
-                socialDiv.style.display = 'none';
-                iframe.style.display = 'block';
-                iframe.src = 'flow.html?step=4&autoSelect=mostly-shade&showPopup=true&hideDevNav=true';
-                document.querySelector('[onclick="loadStage1(\'disqualify\')"]').classList.add('active');
-                console.log('✅ Loading disqualify page...');
-            }
-        }
-
-        // Log page load
-        console.log('SolarFlow User Journey Overview loaded');
-        console.log('All 3 stages embedded with live iframes in iPhone 14 Pro Max view');
-
-        // Force mobile viewport and layout for iframes
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Page loaded - Setting up Stage 1 functionality');
-            
-            // Debug: List all stage1 versions
-            const allStage1Versions = document.querySelectorAll('.stage1-version');
-            console.log(`Found ${allStage1Versions.length} stage1 versions:`);
-            allStage1Versions.forEach((version, index) => {
-                console.log(`- ${version.id} (${version.tagName}) - src: ${version.src || 'N/A'}`);
+        // Project 1 Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all flow sections
+            document.querySelectorAll('.flow-section').forEach(section => {
+                section.classList.remove('active');
+                section.style.display = 'none';
             });
-            
-            // Set up button event listeners immediately
-            console.log('🔘 Setting up toggle button event listeners...');
-            const toggleButtons = document.querySelectorAll('.toggle-btn');
-            console.log(`Found ${toggleButtons.length} toggle buttons`);
-            
-            toggleButtons.forEach((button, index) => {
-                const version = button.getAttribute('data-version');
-                console.log(`Button ${index + 1}: "${button.textContent}" -> version: ${version}`);
-                
-                // Add click handler
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    console.log(`🔘 BUTTON CLICKED: "${this.textContent}" -> ${version}`);
-                    
-                    if (version) {
-                        switchStage1Version(version);
-                    } else {
-                        console.error(`No version found for button: ${this.textContent}`);
-                    }
-                });
-                
-                console.log(`✅ Event listener added to button ${index + 1}`);
-            });
-            
-            // Ensure proper initial state
-            setTimeout(() => {
-                console.log('🔧 Setting initial state to social version');
-                // Call showSocial directly
-                showSocial();
-            }, 100);
-            
-            const iframes = document.querySelectorAll('.page-iframe');
-            
-            iframes.forEach((iframe, index) => {
-                // Set iframe to exact iPhone 14 Pro Max dimensions
-                iframe.style.width = '430px';
-                iframe.style.height = '932px';
-                
-                iframe.onload = function() {
-                    console.log(`📱 Iframe ${index + 1} loaded: ${iframe.src}`);
-                    try {
-                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                        
-                        // Set viewport to iPhone 14 Pro Max
-                        let viewportMeta = iframeDoc.querySelector('meta[name="viewport"]');
-                        if (!viewportMeta) {
-                            viewportMeta = iframeDoc.createElement('meta');
-                            viewportMeta.name = 'viewport';
-                            iframeDoc.head.appendChild(viewportMeta);
-                        }
-                        viewportMeta.content = 'width=430, initial-scale=1.0, user-scalable=no';
-                        
-                        // Force mobile layout by setting window properties
-                        if (iframe.contentWindow) {
-                            // Override screen dimensions to trigger mobile CSS
-                            Object.defineProperty(iframe.contentWindow.screen, 'width', { value: 430 });
-                            Object.defineProperty(iframe.contentWindow.screen, 'height', { value: 932 });
-                            
-                            // Set window inner dimensions
-                            Object.defineProperty(iframe.contentWindow, 'innerWidth', { value: 430 });
-                            Object.defineProperty(iframe.contentWindow, 'innerHeight', { value: 932 });
-                        }
-                        
-                        // Force body width to trigger mobile breakpoints
-                        const html = iframeDoc.documentElement;
-                        const body = iframeDoc.body;
-                        
-                        if (html) {
-                            html.style.width = '430px';
-                            html.style.maxWidth = '430px';
-                        }
-                        
-                        if (body) {
-                            body.style.width = '430px';
-                            body.style.maxWidth = '430px';
-                            body.style.overflow = 'auto';
-                        }
-                        
-                        // Trigger resize event to activate mobile CSS
-                        if (iframe.contentWindow) {
-                            const resizeEvent = new iframe.contentWindow.Event('resize');
-                            iframe.contentWindow.dispatchEvent(resizeEvent);
-                        }
-                        
-                        console.log(`Mobile layout forced for iframe ${index + 1} (430x932)`);
-                    } catch (e) {
-                        console.log(`Cross-origin restriction for iframe ${index + 1}, using CSS scaling fallback`);
-                    }
-                };
-                
-                iframe.onerror = function() {
-                    console.log(`Iframe ${index + 1} failed to load`);
-                };
-            });
-        });
 
-        // Add click tracking for toggle buttons - ENHANCED
-        document.querySelectorAll('.toggle-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+            // Show the selected flow section
+            const activeSection = document.getElementById(tabId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+                activeSection.style.display = 'block';
                 
-                const buttonText = this.textContent.trim();
-                const version = this.getAttribute('data-version');
-                
-                console.log(`🔘 Toggle button clicked: "${buttonText}"`);
-                console.log(`🎯 Data version: ${version}`);
-                
-                if (version) {
-                    console.log(`🎯 Switching to version: ${version}`);
-                    switchStage1Version(version);
-                    
-                    // Reset user interaction for auto-rotation
-                    if (typeof resetStage1UserInteraction === 'function') {
-                        resetStage1UserInteraction();
-                    }
+                // Special handling for the SolarFlow section to reduce its height on screen if needed
+                if (tabId === 'solarflow') {
+                    // This section has its own layout, ensure it's positioned correctly
+                    activeSection.style.minHeight = '100vh';
                 } else {
-                    console.error(`❌ No data-version found on button: ${buttonText}`);
-                }
-            });
-        });
-
-        // Mobile stage advancement function
-        function advanceToStage(targetStage) {
-            if (window.innerWidth > 768) return; // Only work on mobile
-            
-            const flowStages = document.querySelector('.flow-stages');
-            const scrollDots = document.querySelectorAll('.scroll-dot');
-            
-            console.log(`📱 Mobile navigation: advancing to stage ${targetStage + 1}`);
-            
-            // Calculate scroll position for target stage
-            const targetScroll = window.innerWidth * targetStage;
-            
-            // Smooth scroll to target stage
-            flowStages.scrollTo({
-                left: targetScroll,
-                behavior: 'smooth'
-            });
-            
-            // Update active dot
-            scrollDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === targetStage);
-            });
-            
-            // Visual feedback
-            const clickedOverlay = event.target;
-            clickedOverlay.style.background = 'rgba(245, 166, 35, 0.6)';
-            clickedOverlay.textContent = '✓';
-            
-            setTimeout(() => {
-                clickedOverlay.style.background = '';
-                clickedOverlay.textContent = 'Next →';
-            }, 1000);
-        }
-
-        // Mobile scrolling hints
-        function initScrollHints() {
-            if (window.innerWidth > 768) return;
-            
-            console.log('🎯 Initializing mobile scroll hints');
-            
-            const flowStages = document.querySelector('.flow-stages');
-            const scrollHints = document.querySelectorAll('.scroll-hint');
-            let hasScrolled = false;
-            
-            console.log(`Found ${scrollHints.length} scroll hints`);
-            
-            // Make scroll hints clickable to advance stages
-            scrollHints.forEach((hint, index) => {
-                console.log(`Setting up click handler for hint ${index + 1}`);
-                
-                const clickHandler = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    console.log(`📱 Scroll hint clicked on stage ${index + 1}`);
-                    
-                    // Calculate next stage (current index + 1, max 2 for 3 stages total)
-                    const nextStage = Math.min(index + 1, 2);
-                    const targetScroll = window.innerWidth * nextStage;
-                    
-                    console.log(`Moving from stage ${index + 1} to stage ${nextStage + 1}`);
-                    console.log(`Target scroll position: ${targetScroll}px`);
-                    console.log(`Window width: ${window.innerWidth}px`);
-                    
-                    // Smooth scroll to next stage
-                    flowStages.scrollTo({
-                        left: targetScroll,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Also set directly as backup
-                    setTimeout(() => {
-                        flowStages.scrollLeft = targetScroll;
-                        console.log(`Backup scroll set to: ${targetScroll}px`);
-                    }, 100);
-                    
-                    // Update scroll dots
-                    const scrollDots = document.querySelectorAll('.scroll-dot');
-                    scrollDots.forEach((dot, dotIndex) => {
-                        dot.classList.toggle('active', dotIndex === nextStage);
-                    });
-                    
-                    // Visual feedback
-                    hint.style.background = 'rgba(76, 175, 80, 0.9)';
-                    hint.textContent = '✓';
-                    
-                    setTimeout(() => {
-                        hint.style.background = 'rgba(245, 166, 35, 0.9)';
-                        hint.textContent = '→';
-                    }, 1000);
-                    
-                    // Hide all hints after first click
-                    hasScrolled = true;
-                    setTimeout(() => {
-                        scrollHints.forEach(h => h.classList.add('hidden'));
-                    }, 1500);
-                };
-                
-                // Add multiple event listeners for better compatibility
-                hint.addEventListener('click', clickHandler);
-                hint.addEventListener('touchend', clickHandler);
-                
-                // Add touch feedback
-                hint.addEventListener('touchstart', function(e) {
-                    e.preventDefault();
-                    console.log(`Touch start on hint ${index + 1}`);
-                    hint.style.background = 'rgba(224, 148, 31, 1)';
-                    hint.style.transform = 'translateY(-50%) scale(0.95)';
-                });
-                
-                // Reset touch feedback
-                hint.addEventListener('touchcancel', function() {
-                    hint.style.background = 'rgba(245, 166, 35, 0.9)';
-                    hint.style.transform = 'translateY(-50%) scale(1)';
-                });
-                
-                console.log(`✅ Event listeners attached to hint ${index + 1}`);
-            });
-            
-            // Hide hints after user scrolls manually
-            flowStages.addEventListener('scroll', function() {
-                if (!hasScrolled) {
-                    hasScrolled = true;
-                    console.log('Manual scroll detected, hiding hints');
-                    scrollHints.forEach(hint => hint.classList.add('hidden'));
-                }
-            });
-            
-            // Auto-hide hints after 8 seconds
-            setTimeout(() => {
-                if (!hasScrolled) {
-                    console.log('Auto-hiding hints after 8 seconds');
-                    scrollHints.forEach(hint => hint.classList.add('hidden'));
-                }
-            }, 8000);
-            
-            console.log('✅ Mobile scroll hints initialized');
-        }
-
-        // Conference mode toggle
-        function toggleConferenceMode() {
-            const mainNav = document.querySelector('.main-nav');
-            const conferenceToggle = document.querySelector('.conference-toggle');
-            
-            if (mainNav.style.display === 'none') {
-                // Exit conference mode
-                mainNav.style.display = 'block';
-                conferenceToggle.textContent = '📱 Conference Mode';
-                console.log('Conference mode OFF');
-            } else {
-                // Enter conference mode
-                mainNav.style.display = 'none';
-                conferenceToggle.textContent = '🔙 Exit Conference';  
-                console.log('Conference mode ON - Main nav hidden for clean presentation');
-            }
-        }
-
-        function toggleNavigation() {
-            const mainNav = document.querySelector('.main-nav');
-            const navToggle = document.querySelector('.nav-toggle');
-            const navRestore = document.querySelector('.nav-restore');
-            
-            if (mainNav.style.display === 'none') {
-                // Show navigation
-                mainNav.style.display = 'block';
-                navRestore.style.display = 'none';
-                console.log('Navigation shown');
-            } else {
-                // Hide navigation
-                mainNav.style.display = 'none';
-                navRestore.style.display = 'block';
-                console.log('Navigation hidden');
-            }
-        }
-
-        function hideNavigation() {
-            const mainNav = document.querySelector('.main-nav');
-            const navClose = document.querySelector('.nav-close');
-            const navRestore = document.querySelector('.nav-restore');
-            
-            mainNav.style.display = 'none';
-            navClose.style.display = 'none';
-            navRestore.style.display = 'block';
-            console.log('Navigation hidden via X button');
-        }
-
-        function showNavigation() {
-            const mainNav = document.querySelector('.main-nav');
-            const navClose = document.querySelector('.nav-close');
-            const navRestore = document.querySelector('.nav-restore');
-            
-            mainNav.style.display = 'block';
-            navClose.style.display = 'flex';
-            navRestore.style.display = 'none';
-            console.log('Navigation shown via restore button');
-        }
-
-        // Removed old dev nav toggle function - no longer needed
-
-        // Function to update Stage 1 dynamic section based on version
-        function updateStage1SectionFromVersion(version) {
-            let title = '';
-            let description = '';
-            
-            switch(version) {
-                case 'thankyou':
-                    title = 'Thank You Page';
-                    description = 'One option to place content articles within the flow. Can be slotted in to any part of the flow on any vertical.';
-                    break;
-                case 'disqualify':
-                    title = 'Disqualifying Offer';
-                    description = 'User can be shown a link to a content article on any vertical if they do not qualify for an offer.';
-                    break;
-                case 'social':
-                    title = 'Socials';
-                    description = 'Learn More button links out to content page.';
-                    break;
-                default:
-                    return; // Don\'t show section if unknown version
-            }
-            
-            updateStage1Section(title, description);
-        }
-
-        // Mobile horizontal scroll management - FIXED VERSION
-        function initMobileScroll() {
-            console.log('=== INIT MOBILE SCROLL ===');
-            console.log(`Window width: ${window.innerWidth}px`);
-            console.log(`Should be mobile: ${window.innerWidth <= 768}`);
-            
-            const flowStages = document.querySelector('.flow-stages');
-            const scrollDots = document.querySelectorAll('.scroll-dot');
-            const scrollIndicators = document.getElementById('scrollIndicators');
-            
-            if (!flowStages) {
-                console.error('Flow stages container not found!');
-                return;
-            }
-            
-            // ALWAYS show debug button on mobile (even if width check fails)
-            const isMobile = window.innerWidth <= 768;
-            console.log(`Is mobile: ${isMobile}`);
-            
-            if (isMobile) {
-                // Show scroll indicators
-                if (scrollIndicators) {
-                    scrollIndicators.style.display = 'flex';
-                    console.log('Scroll indicators shown');
-                }
-                
-                // Force mobile layout with JavaScript - FIXED CONTAINER WIDTH
-                const viewportWidth = window.innerWidth;
-                const totalContentWidth = viewportWidth * 3; // 3 stages
-                
-                flowStages.style.cssText = `
-                    display: flex !important;
-                    flex-direction: row !important;
-                    flex-wrap: nowrap !important;
-                    overflow-x: scroll !important;
-                    overflow-y: hidden !important;
-                    scroll-snap-type: x mandatory !important;
-                    -webkit-overflow-scrolling: touch !important;
-                    width: ${viewportWidth}px !important;
-                    max-width: ${viewportWidth}px !important;
-                    height: calc(100vh - 120px) !important;
-                    cursor: grab !important;
-                    position: relative !important;
-                    box-sizing: border-box !important;
-                `;
-                
-                console.log(`🔧 FIXED: Container constrained to ${viewportWidth}px, content is ${totalContentWidth}px`);
-                
-                // Force reflow
-                flowStages.offsetWidth;
-                
-                // Add drag scrolling for desktop testing
-                let isScrolling = false;
-                let startX = 0;
-                let scrollLeft = 0;
-                
-                flowStages.addEventListener('mousedown', (e) => {
-                    isScrolling = true;
-                    flowStages.style.cursor = 'grabbing';
-                    startX = e.pageX - flowStages.offsetLeft;
-                    scrollLeft = flowStages.scrollLeft;
-                    console.log('🖱️ Mouse drag started');
-                });
-                
-                flowStages.addEventListener('mouseleave', () => {
-                    isScrolling = false;
-                    flowStages.style.cursor = 'grab';
-                });
-                
-                flowStages.addEventListener('mouseup', () => {
-                    isScrolling = false;
-                    flowStages.style.cursor = 'grab';
-                    console.log('🖱️ Mouse drag ended');
-                });
-                
-                flowStages.addEventListener('mousemove', (e) => {
-                    if (!isScrolling) return;
-                    e.preventDefault();
-                    const x = e.pageX - flowStages.offsetLeft;
-                    const walk = (x - startX) * 2; // Scroll speed
-                    flowStages.scrollLeft = scrollLeft - walk;
-                    console.log(`🖱️ Dragging: scrollLeft = ${flowStages.scrollLeft}`);
-                });
-                
-                // Force stage widths and ENSURE PROPER ORDERING - FIXED
-                const stages = document.querySelectorAll('.flow-stage');
-                let totalWidth = 0;
-                
-                // REORDER: Make sure Thank You page is truly first
-                console.log('🔄 CHECKING STAGE ORDER:');
-                stages.forEach((stage, index) => {
-                    const title = stage.querySelector('.stage-title').textContent;
-                    console.log(`Stage ${index}: ${title}`);
-                });
-                
-                // Force positioning - REMOVE LEFT POSITIONING
-                stages.forEach((stage, index) => {
-                    const stageWidth = window.innerWidth;
-                    totalWidth += stageWidth;
-                    
-                    stage.style.cssText = `
-                        min-width: ${stageWidth}px !important;
-                        width: ${stageWidth}px !important;
-                        max-width: ${stageWidth}px !important;
-                        flex: 0 0 ${stageWidth}px !important;
-                        flex-shrink: 0 !important;
-                        flex-grow: 0 !important;
-                        scroll-snap-align: start !important;
-                        border-right: 1px solid #eee !important;
-                        background: ${index % 2 === 0 ? '#fff' : '#f9f9f9'} !important;
-                        display: block !important;
-                        box-sizing: border-box !important;
-                        overflow-y: auto !important;
-                        padding: 20px !important;
-                        height: 100% !important;
-                        position: relative !important;
-                        order: ${index} !important;
-                    `;
-                    
-                    console.log(`Stage ${index + 1} (${stage.querySelector('.stage-title').textContent}): Natural flex position, width ${stageWidth}px`);
-                });
-                
-                console.log(`Total content width: ${totalWidth}px (${stages.length} stages × ${window.innerWidth}px)`);
-                // DON'T set container width to total - that was the bug!
-                // Final verification and INITIAL POSITIONING
-                setTimeout(() => {
-                    console.log('=== FINAL VERIFICATION ===');
-                    console.log(`Container scroll width: ${flowStages.scrollWidth}px`);
-                    console.log(`Container client width: ${flowStages.clientWidth}px`);
-                    console.log(`Container offset width: ${flowStages.offsetWidth}px`);
-                    console.log(`Is definitely scrollable: ${flowStages.scrollWidth > flowStages.clientWidth}`);
-                    console.log(`Max scroll position: ${flowStages.scrollWidth - flowStages.clientWidth}px`);
-                    
-                    // Check each stage position
-                    const stages = document.querySelectorAll('.flow-stage');
-                    stages.forEach((stage, index) => {
-                        const rect = stage.getBoundingClientRect();
-                        const containerRect = flowStages.getBoundingClientRect();
-                        const relativeLeft = rect.left - containerRect.left + flowStages.scrollLeft;
-                        console.log(`📍 Stage ${index + 1} (${stage.querySelector('.stage-title').textContent}): Position ${relativeLeft}px, Width ${rect.width}px`);
-                    });
-                    
-                    // FORCE START AT STAGE 1 (Thank You page) - FIXED APPROACH
-                    console.log('🎯 FORCING START POSITION TO STAGE 1 - FIXED');
-                    const firstStage = stages[0];
-                    
-                    // Simple approach: just ensure we start at 0
-                    flowStages.scrollLeft = 0;
-                    currentStage = 0;
-                    
-                    // Update the first dot to be active
-                    const firstDot = document.querySelector('.scroll-dot[data-stage="0"]');
-                    if (firstDot) {
-                        document.querySelectorAll('.scroll-dot').forEach(dot => dot.classList.remove('active'));
-                        firstDot.classList.add('active');
-                    }
-                    
-                    if (flowStages.scrollWidth <= flowStages.clientWidth) {
-                        console.error('❌ CONTAINER IS NOT SCROLLABLE - This is the problem!');
-                    } else {
-                        console.log('✅ Container is properly scrollable!');
-                    }
-                }, 500);
-                
-                // Clean mobile scroll - Mobile scrolling setup complete
-                // Add scroll event listener
-                flowStages.addEventListener('scroll', function() {
-                    const scrollLeft = flowStages.scrollLeft;
-                    const containerWidth = window.innerWidth;
-                    const currentStage = Math.round(scrollLeft / containerWidth);
-                    
-                    scrollDots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === currentStage);
-                    });
-                });
-                
-                // Add dot click handlers
-                scrollDots.forEach((dot, index) => {
-                    dot.addEventListener('click', function() {
-                        const targetScroll = window.innerWidth * index;
-                        
-                        flowStages.scrollTo({
-                            left: targetScroll,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update active dot
-                        scrollDots.forEach((d, i) => {
-                            d.classList.toggle('active', i === index);
-                        });
-                    });
-                });
-                
-                console.log('Mobile scroll setup complete!');
-                
-            } else {
-                // Desktop mode
-                if (scrollIndicators) {
-                    scrollIndicators.style.display = 'none';
-                }
-                
-                console.log('Desktop mode - mobile features disabled');
-            }
-        }
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            initMobileScroll();
-        });
-        
-        // Initialize on load
-        // BROKEN MOBILE INIT - COMMENTED OUT
-        /*
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 DOM LOADED - Initializing mobile scroll');
-            
-            if (window.innerWidth <= 768) {
-                const flowStages = document.querySelector('.flow-stages');
-                const scrollDots = document.querySelectorAll('.scroll-dot');
-                const scrollIndicators = document.getElementById('scrollIndicators');
-                
-                console.log('Flow stages found:', !!flowStages);
-                    z-index: 999999 !important;
-                    background: #ff4444 !important;
-                    color: white !important;
-                    padding: 15px 20px !important;
-                    border: 3px solid white !important;
-                    border-radius: 25px !important;
-                    font-size: 16px !important;
-                    font-weight: bold !important;
-                    cursor: pointer !important;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
-                    pointer-events: auto !important;
-                    user-select: none !important;
-                    -webkit-user-select: none !important;
-                    -webkit-tap-highlight-color: transparent !important;
-                `;
-                
-                let currentStage = 0;
-                
-                // Multiple event listeners for better compatibility - FIXED POSITIONING
-                const clickHandler = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    console.log(`🔥 BUTTON CLICKED!`);
-                    console.log(`Current scroll position: ${flowStages.scrollLeft}px`);
-                    console.log(`Current stage before: ${currentStage}`);
-                    
-                    // Cycle through stages: 0, 1, 2, then back to 0
-                    currentStage = (currentStage + 1) % 3;
-                    
-                    // Calculate actual position of target stage
-                    const stages = document.querySelectorAll('.flow-stage');
-                    const targetStage = stages[currentStage];
-                    const containerRect = flowStages.getBoundingClientRect();
-                    const stageRect = targetStage.getBoundingClientRect();
-                    
-                    // Calculate the scroll position needed to show this stage
-                    const targetScroll = stageRect.left - containerRect.left + flowStages.scrollLeft;
-                    
-                    const stageNames = ['Thank You', 'Content', 'SERP'];
-                    console.log(`🎯 Going to stage ${currentStage} (${stageNames[currentStage]})`);
-                    console.log(`Target scroll position: ${targetScroll}px (calculated from actual stage position)`);
-                    
-                    // Smooth scroll to target
-                    flowStages.scrollTo({
-                        left: targetScroll,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Also set directly as backup
-                    setTimeout(() => {
-                        flowStages.scrollLeft = targetScroll;
-                    }, 100);
-                    
-                    // Update button text to show current stage
-                    debugBtn.style.background = '#00ff00';
-                    debugBtn.textContent = `→ ${stageNames[currentStage]}`;
-                    
-                    setTimeout(() => {
-                        debugBtn.style.background = '#ff4444';
-                        debugBtn.textContent = 'Next Stage →';
-                    }, 1000);
-                    
-                    // Verify result
-                    setTimeout(() => {
-                        console.log(`✅ Final position: ${flowStages.scrollLeft}px (expected: ${targetScroll}px)`);
-                        const actualStageIndex = Math.round(flowStages.scrollLeft / window.innerWidth);
-                        console.log(`Now showing: Stage ${actualStageIndex} (${stageNames[actualStageIndex] || 'Unknown'})`);
-                    }, 600);
-                };
-                
-                debugBtn.addEventListener('click', clickHandler);
-                debugBtn.addEventListener('touchstart', clickHandler);
-                debugBtn.addEventListener('mousedown', clickHandler);
-                
-                document.body.appendChild(debugBtn);
-                console.log('🔥 DEBUG BUTTON CREATED WITH MULTIPLE EVENT LISTENERS');
-                
-                // Add a second button for direct scroll testing
-                const testBtn = document.createElement('button');
-                testBtn.id = 'testDirectScroll';
-                testBtn.textContent = 'Scroll 500px →';
-                testBtn.style.cssText = `
-                    position: fixed !important;
-                    top: 130px !important;
-                    right: 10px !important;
-                    z-index: 999999 !important;
-                    background: #0066ff !important;
-                    color: white !important;
-                    padding: 10px 15px !important;
-                    border: 2px solid white !important;
-                    border-radius: 20px !important;
-                    font-size: 14px !important;
-                    font-weight: bold !important;
-                    cursor: pointer !important;
-                    pointer-events: auto !important;
-                `;
-                
-                testBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('🔵 DIRECT SCROLL TEST - Scrolling 500px');
-                    console.log(`Before: ${flowStages.scrollLeft}px`);
-                    
-                    flowStages.scrollLeft += 500;
-                    
-                    setTimeout(() => {
-                        console.log(`After: ${flowStages.scrollLeft}px`);
-                    }, 100);
-                });
-                
-                document.body.appendChild(testBtn);
-                console.log('🔵 DIRECT SCROLL TEST BUTTON ADDED');
-                
-                // Add "Go to Stage 1" button
-                const stage1Btn = document.createElement('button');
-                stage1Btn.id = 'goToStage1';
-                stage1Btn.textContent = 'Go to Stage 1';
-                stage1Btn.style.cssText = `
-                    position: fixed !important;
-                    top: 180px !important;
-                    right: 10px !important;
-                    z-index: 999999 !important;
-                    background: #28a745 !important;
-                    color: white !important;
-                    padding: 10px 15px !important;
-                    border: 2px solid white !important;
-                    border-radius: 20px !important;
-                    font-size: 14px !important;
-                    font-weight: bold !important;
-                    cursor: pointer !important;
-                    pointer-events: auto !important;
-                `;
-                
-                stage1Btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('🟢 GO TO STAGE 1 (Thank You) - Calculating actual position');
-                    console.log(`Before: ${flowStages.scrollLeft}px`);
-                    
-                    // Find the actual position of the first stage
-                    const stages = document.querySelectorAll('.flow-stage');
-                    const firstStage = stages[0];
-                    const containerRect = flowStages.getBoundingClientRect();
-                    const stageRect = firstStage.getBoundingClientRect();
-                    
-                    const targetScroll = stageRect.left - containerRect.left + flowStages.scrollLeft;
-                    console.log(`Calculated position for Stage 1: ${targetScroll}px`);
-                    
-                    currentStage = 0;
-                    flowStages.scrollTo({
-                        left: targetScroll,
-                        behavior: 'smooth'
-                    });
-                    
-                    setTimeout(() => {
-                        flowStages.scrollLeft = targetScroll;
-                    }, 100);
-                    
-                    stage1Btn.style.background = '#00ff00';
-                    stage1Btn.textContent = 'Going to Stage 1...';
-                    setTimeout(() => {
-                        stage1Btn.style.background = '#28a745';
-                        stage1Btn.textContent = 'Go to Stage 1';
-                        console.log(`After: ${flowStages.scrollLeft}px`);
-                    }, 600);
-                });
-                
-                document.body.appendChild(stage1Btn);
-                console.log('🟢 GO TO STAGE 1 BUTTON ADDED');
-                
-                // Add "Reset to Start" button
-                const resetBtn = document.createElement('button');
-                resetBtn.id = 'resetToStart';
-                resetBtn.textContent = 'Reset to Start';
-                resetBtn.style.cssText = `
-                    position: fixed !important;
-                    top: 230px !important;
-                    right: 10px !important;
-                    z-index: 999999 !important;
-                    background: #dc3545 !important;
-                    color: white !important;
-                    padding: 10px 15px !important;
-                    border: 2px solid white !important;
-                    border-radius: 20px !important;
-                    font-size: 14px !important;
-                    font-weight: bold !important;
-                    cursor: pointer !important;
-                    pointer-events: auto !important;
-                `;
-                
-                resetBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('🔴 RESET TO START - Forcing scroll to 0px');
-                    console.log(`Before: ${flowStages.scrollLeft}px`);
-                    
-                    // Force to absolute beginning
-                    currentStage = 0;
-                    flowStages.scrollLeft = 0;
-                    flowStages.scrollTo({ left: 0, behavior: 'smooth' });
-                    
-                    // Update dots
-                    const dots = document.querySelectorAll('.scroll-dot');
-                    dots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === 0);
-                    });
-                    
-                    resetBtn.style.background = '#00ff00';
-                    resetBtn.textContent = 'Reset!';
-                    setTimeout(() => {
-                        resetBtn.style.background = '#dc3545';
-                        resetBtn.textContent = 'Reset to Start';
-                        console.log(`After reset: ${flowStages.scrollLeft}px`);
-                    }, 600);
-                });
-                
-                document.body.appendChild(resetBtn);
-                console.log('🔴 RESET TO START BUTTON ADDED');
-                
-                // Add debug info button
-                const debugInfoBtn = document.createElement('button');
-                debugInfoBtn.id = 'debugInfo';
-                debugInfoBtn.textContent = 'Debug Info';
-                debugInfoBtn.style.cssText = `
-                    position: fixed !important;
-                    top: 280px !important;
-                    right: 10px !important;
-                    z-index: 999999 !important;
-                    background: #6f42c1 !important;
-                    color: white !important;
-                    padding: 8px 12px !important;
-                    border: 2px solid white !important;
-                    border-radius: 15px !important;
-                    font-size: 12px !important;
-                    font-weight: bold !important;
-                    cursor: pointer !important;
-                    pointer-events: auto !important;
-                `;
-                
-                debugInfoBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('🔍 === DEBUG INFO ===');
-                    console.log(`Current scroll: ${flowStages.scrollLeft}px`);
-                    console.log(`Container width: ${flowStages.clientWidth}px`);
-                    console.log(`Total scroll width: ${flowStages.scrollWidth}px`);
-                    
-                    const stages = document.querySelectorAll('.flow-stage');
-                    stages.forEach((stage, index) => {
-                        const rect = stage.getBoundingClientRect();
-                        const containerRect = flowStages.getBoundingClientRect();
-                        const relativeLeft = rect.left - containerRect.left;
-                        const isVisible = relativeLeft >= 0 && relativeLeft < containerRect.width;
-                        const title = stage.querySelector('.stage-title').textContent;
-                        console.log(`Stage ${index}: "${title}" - Position: ${relativeLeft}px, Visible: ${isVisible}`);
-                    });
-                    
-                    // Test specific scroll positions
-                    console.log('🧪 Testing scroll positions:');
-                    for (let i = 0; i < 3; i++) {
-                        const testPos = window.innerWidth * i;
-                        console.log(`Position ${testPos}px should show stage ${i + 1}`);
-                    }
-                });
-                
-                document.body.appendChild(debugInfoBtn);
-                console.log('🔍 DEBUG INFO BUTTON ADDED');
-                
-                // Add scroll event listener
-                flowStages.addEventListener('scroll', function() {
-                    const scrollLeft = flowStages.scrollLeft;
-                    const containerWidth = window.innerWidth;
-                    const currentStage = Math.round(scrollLeft / containerWidth);
-                    
-                    console.log(`SCROLL EVENT: left=${scrollLeft}, width=${containerWidth}, stage=${currentStage}`);
-                    
-                    scrollDots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === currentStage);
-                    });
-                });
-                
-                // Click dots to navigate
-                scrollDots.forEach((dot, index) => {
-                    dot.addEventListener('click', function() {
-                        const targetScroll = window.innerWidth * index;
-                        console.log(`DOT CLICKED: stage=${index}, scrollTo=${targetScroll}px`);
-                        
-                        flowStages.scrollTo({
-                            left: targetScroll,
-                            behavior: 'smooth'
-                        });
-                    });
-                });
-                
-                console.log('Mobile scroll setup complete!');
-                
-            } else {
-                // Desktop mode
-                if (scrollIndicators) {
-                    scrollIndicators.style.display = 'none';
-                }
-                
-                console.log('Desktop mode - mobile features disabled');
-            }
-        }
-        */
-        // END BROKEN MOBILE INIT
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            initMobileScroll();
-        });
-
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 DOM LOADED - Initializing mobile scroll');
-            
-            if (window.innerWidth <= 768) {
-                const flowStages = document.querySelector('.flow-stages');
-                const scrollDots = document.querySelectorAll('.scroll-dot');
-                const scrollIndicators = document.getElementById('scrollIndicators');
-                
-                console.log('Flow stages found:', !!flowStages);
-                
-                if (flowStages) {
-                    // Apply mobile scrolling CSS
-                    console.log('Applying CSS to flowStages');
-                    
-                    flowStages.style.cssText = `
-                        display: flex !important;
-                        flex-direction: row !important;
-                        overflow-x: scroll !important;
-                        overflow-y: hidden !important;
-                        scroll-snap-type: x mandatory !important;
-                        -webkit-overflow-scrolling: touch !important;
-                        width: 100vw !important;
-                        height: calc(100vh - 80px) !important;
-                        position: relative !important;
-                        margin: 0 !important;
-                        padding: 0 !important;
-                        border: none !important;
-                        scroll-behavior: smooth !important;
-                        scrollbar-width: none !important;
-                        -ms-overflow-style: none !important;
-                    `;
-                    
-                    // Hide scrollbar for WebKit browsers
-                    flowStages.style.setProperty('-webkit-scrollbar', 'none', 'important');
-                    
-                    // Ensure each stage is properly sized
-                    const stages = flowStages.querySelectorAll('.flow-stage');
-                    console.log('Stages found:', stages.length);
-                    
-                    stages.forEach((stage, index) => {
-                        stage.style.minWidth = '100vw';
-                        stage.style.width = '100vw';
-                        stage.style.flexShrink = '0';
-                        stage.style.scrollSnapAlign = 'start';
-                        // Add smooth vertical scrolling within each stage
-                        stage.style.overflowY = 'auto';
-                        stage.style.webkitOverflowScrolling = 'touch';
-                        stage.style.scrollBehavior = 'smooth';
-                    });
-                    
-                    console.log('Mobile scrolling CSS applied');
-                    
-                    setTimeout(() => {
-                        // CRITICAL: Force start at Stage 1 (index 0) - ALWAYS first
-                        flowStages.scrollLeft = 0;
-                        
-                        // Double-check and force again if needed
-                        setTimeout(() => {
-                            if (flowStages.scrollLeft !== 0) {
-                                console.log('🔧 Secondary reset needed');
-                                flowStages.scrollLeft = 0;
-                            }
-                        }, 100);
-                        
-                        console.log('✅ FORCED START: Stage 1 at position 0px');
-                        console.log('ScrollWidth:', flowStages.scrollWidth, 'ClientWidth:', flowStages.clientWidth);
-                        console.log('Can scroll:', flowStages.scrollWidth > flowStages.clientWidth);
-                        
-                        // Ensure first dot is active
-                        if (scrollDots.length > 0) {
-                            scrollDots.forEach((dot, index) => {
-                                dot.classList.toggle('active', index === 0);
-                            });
-                            console.log('✅ First scroll indicator activated');
-                        }
-                    }, 200);
-                    
-                    console.log('✅ Mobile scroll enabled');
-                    
-                    // Show scroll indicators
-                    if (scrollIndicators) {
-                        scrollIndicators.style.display = 'flex';
-                    }
-                    
-                    // Add scroll event listener for dot indicators - IMPROVED
-                    flowStages.addEventListener('scroll', function() {
-                        const scrollLeft = flowStages.scrollLeft;
-                        const stageWidth = flowStages.clientWidth;
-                        const currentStage = Math.round(scrollLeft / stageWidth);
-                        
-                        console.log(`📱 Scroll Event: position=${scrollLeft}px, stage=${currentStage}`);
-                        
-                        // Update active dot with bounds checking
-                        scrollDots.forEach((dot, index) => {
-                            const isActive = index === Math.max(0, Math.min(currentStage, scrollDots.length - 1));
-                            dot.classList.toggle('active', isActive);
-                        });
-                    }, { passive: true });
-                    
-                    // Add click handlers for dots
-                    scrollDots.forEach((dot, index) => {
-                        dot.addEventListener('click', function() {
-                            const targetPosition = index * flowStages.clientWidth;
-                            flowStages.scrollTo({
-                                left: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        });
-                        dot.setAttribute('data-stage', index);
-                    });
-                    
-                    // Debug: Test scroll after 3 seconds
-                    setTimeout(() => {
-                        console.log('Testing scroll to stage 2...');
-                        flowStages.scrollTo({ left: flowStages.clientWidth, behavior: 'smooth' });
-                    }, 3000);
+                    // Restore original height for scrolling sections
+                    activeSection.style.minHeight = '400vh'; 
                 }
             }
-        });
 
-        // Handle refresh case - apply mobile styles on window load
-        window.addEventListener('load', function() {
-            console.log('🔄 Window loaded - checking for mobile refresh');
-            
-            if (window.innerWidth <= 768) {
-                const flowStages = document.querySelector('.flow-stages');
-                if (flowStages) {
-                    console.log('Applying mobile CSS on refresh');
-                    
-                    // Re-apply mobile scrolling CSS for refresh case
-                    flowStages.style.cssText = `
-                        display: flex !important;
-                        flex-direction: row !important;
-                        overflow-x: scroll !important;
-                        overflow-y: hidden !important;
-                        scroll-snap-type: x mandatory !important;
-                        -webkit-overflow-scrolling: touch !important;
-                        width: 100vw !important;
-                        height: calc(100vh - 120px) !important;
-                        position: relative !important;
-                        margin: 0 !important;
-                        padding: 0 !important;
-                        border: none !important;
-                    `;
-                    
-                    // Ensure each stage is properly sized
-                    const stages = flowStages.querySelectorAll('.flow-stage');
-                    stages.forEach(stage => {
-                        stage.style.minWidth = '100vw';
-                        stage.style.width = '100vw';
-                        stage.style.flexShrink = '0';
-                        stage.style.scrollSnapAlign = 'start';
-                    });
-                    
-                    // Reset to stage 1 after applying CSS
-                    setTimeout(() => {
-                        flowStages.scrollLeft = 0;
-                        console.log('Refresh: Reset to Stage 1');
-                        console.log('Refresh ScrollWidth:', flowStages.scrollWidth, 'ClientWidth:', flowStages.clientWidth);
-                    }, 200);
+            // Update tab button active state
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('onclick').includes(`'${tabId}'`)) {
+                    button.classList.add('active');
                 }
-            }
-        });
-
-        // Handle iframe communication if needed
-        window.addEventListener('message', function(event) {
-            // Accept messages from any origin for production
-            //if (event.origin === 'http://localhost:8084') {
-                console.log('Message from iframe:', event.data);
-            //}
-        });
-
-        // Center iframe content horizontally when loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded - starting auto-rotation');
-            
-            // Start with the social view
-            showSocial();
-            
-            // Start auto-rotation immediately
-            startAutoRotation();
-            
-            // Add click handlers for the toggle buttons
-            document.querySelectorAll('.toggle-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    // Get the view name from the function
-                    const onclickAttr = this.getAttribute('onclick');
-                    if (onclickAttr && onclickAttr.includes('show')) {
-                        const viewName = onclickAttr.replace('show', '').replace('()', '').toLowerCase();
-                        console.log('Button clicked for view: ' + viewName);
-                        
-                        // Restart auto-rotation when a button is clicked
-                        restartAutoRotation();
-                    }
-                });
             });
-            
-            const iframes = document.querySelectorAll('.page-iframe');
-            
-            iframes.forEach(function(iframe) {
-                iframe.addEventListener('load', function() {
-                    try {
-                        // Calculate center position for horizontal scroll
-                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                        const scrollWidth = iframeDoc.documentElement.scrollWidth;
-                        const clientWidth = iframeDoc.documentElement.clientWidth;
-                        const centerPosition = (scrollWidth - clientWidth) / 2;
-                        
-                        // Set horizontal scroll to center
-                        iframeDoc.documentElement.scrollLeft = centerPosition;
-                        iframeDoc.body.scrollLeft = centerPosition;
-                        
-                        console.log('Centered iframe content:', iframe.title);
-                    } catch (e) {
-                        // Handle cross-origin issues silently
-                        console.log('Could not center iframe due to cross-origin restrictions:', iframe.title);
-                    }
-                });
-            });
-        });
 
-        // Stage 1 Dynamic Section Handler
-        // Listen for messages from Stage 1 iframe to detect clicked options
-        window.addEventListener('message', function(event) {
-            // Accept messages from any origin for production
-            //if (event.origin === 'http://localhost:8084') {
-                // Check if message is from Stage 1 and contains option data
-                if (event.data && event.data.type === 'option-clicked' && event.data.stage === 1) {
-                    updateStage1Section(event.data.option, event.data.description);
-                }
+            // Make the first phone in the new tab visible right away
+            const firstPhone = activeSection.querySelector('.phone1');
+            if (firstPhone) {
+                firstPhone.classList.add('visible');
             }
-        });
-                height: calc(100vh - 120px) !important;
-                position: relative !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: none !important;
-                background: transparent !important;
-                box-sizing: border-box !important;
-            `;
-            
-            // Clean up stage styling
-            const stages = flowStages.querySelectorAll('.flow-stage');
-            console.log(`Found ${stages.length} stages`);
-            
-            stages.forEach((stage, index) => {
-                stage.removeAttribute('style');
-                stage.style.cssText = `
-                    min-width: 100vw !important;
-                    width: 100vw !important;
-                    max-width: 100vw !important;
-                    flex: 0 0 100vw !important;
-                    flex-shrink: 0 !important;
-                    scroll-snap-align: start !important;
-                    padding: 20px !important;
-                    margin: 0 !important;
-                    box-sizing: border-box !important;
-                    overflow-y: auto !important;
-                    position: relative !important;
-                    background: white !important;
-                    border: none !important;
-                    border-radius: 0 !important;
-                    box-shadow: none !important;
-                `;
-            });
-            
-            // Show scroll indicators
-            if (scrollIndicators) {
-                scrollIndicators.style.display = 'flex';
-            }
-            
-            // Reset to first stage
-            setTimeout(() => {
-                flowStages.scrollLeft = 0;
-                
-                // Activate first dot
-                scrollDots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === 0);
-                });
-                
-                console.log('✅ Mobile scrolling initialized successfully');
-                console.log(`ScrollWidth: ${flowStages.scrollWidth}, ClientWidth: ${flowStages.clientWidth}`);
-                console.log(`Can scroll: ${flowStages.scrollWidth > flowStages.clientWidth}`);
-            }, 100);
-            
-            // Add scroll event listener (only once)
-            flowStages.removeEventListener('scroll', handleMobileScroll);
-            flowStages.addEventListener('scroll', handleMobileScroll);
-            
-            // Add dot click handlers (only once)
-            scrollDots.forEach((dot, index) => {
-                dot.removeEventListener('click', handleDotClick);
-                dot.addEventListener('click', handleDotClick);
-                dot.setAttribute('data-stage', index);
+            // And remove the visibility class from all phones that are not the first
+            document.querySelectorAll('.flow-section:not(#' + tabId + ') .phone').forEach(phone => {
+                phone.classList.remove('visible');
             });
         }
 
-        // Separate scroll handler to avoid duplicate listeners
-        function handleMobileScroll() {
-            const flowStages = document.querySelector('.flow-stages');
-            const scrollDots = document.querySelectorAll('.scroll-dot');
-            
-            if (!flowStages) return;
-            
-            const scrollLeft = flowStages.scrollLeft;
-            const stageWidth = flowStages.clientWidth;
-            const currentStage = Math.round(scrollLeft / stageWidth);
-            
-            scrollDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentStage);
-            });
-        }
+        // Project 1 Scroll Visibility Logic (slightly modified to use display: block/none for phones)
+        function checkScrollVisibility() {
+            const sections = document.querySelectorAll('.flow-section.active');
+            sections.forEach(section => {
+                const phoneElements = section.querySelectorAll('.phone');
+                const arrowElements = section.querySelectorAll('.arrow');
 
-        // Separate dot click handler to avoid duplicate listeners
-        function handleDotClick(event) {
-            const flowStages = document.querySelector('.flow-stages');
-            const index = parseInt(event.target.getAttribute('data-stage'));
-            
-            if (!flowStages || isNaN(index)) return;
-            
-            const targetPosition = index * flowStages.clientWidth;
-            flowStages.scrollTo({
-                left: targetPosition,
-                behavior: 'smooth'
-            });
-        }
+                if (phoneElements.length === 0) return;
 
-        // Handle refresh case - apply mobile styles on window load
-        window.addEventListener('load', function() {
-            console.log('🔄 Window loaded - checking for mobile refresh');
-            
-            if (window.innerWidth <= 768) {
-                const flowStages = document.querySelector('.flow-stages');
-                if (flowStages) {
-                    console.log('Applying mobile CSS on refresh');
-                    
-                    // Re-apply mobile scrolling CSS for refresh case
-                    flowStages.style.cssText = `
-                        display: flex !important;
-                        flex-direction: row !important;
-                        overflow-x: scroll !important;
-                        overflow-y: hidden !important;
-                        scroll-snap-type: x mandatory !important;
-                        -webkit-overflow-scrolling: touch !important;
-                        width: 100vw !important;
-                        height: calc(100vh - 120px) !important;
-                        position: relative !important;
-                        margin: 0 !important;
-                        padding: 0 !important;
-                        border: none !important;
-                    `;
-                    
-                    // Ensure each stage is properly sized
-                    const stages = flowStages.querySelectorAll('.flow-stage');
-                    stages.forEach(stage => {
-                        stage.style.minWidth = '100vw';
-                        stage.style.width = '100vw';
-                        stage.style.flexShrink = '0';
-                        stage.style.scrollSnapAlign = 'start';
-                    });
-                    
-                    // Reset to stage 1 after applying CSS
-                    setTimeout(() => {
-                        flowStages.scrollLeft = 0;
-                        console.log('Refresh: Reset to Stage 1');
-                        console.log('Refresh ScrollWidth:', flowStages.scrollWidth, 'ClientWidth:', flowStages.clientWidth);
-                    }, 200);
-                }
-            }
-        });
+                const phone1 = phoneElements[0];
+                const phone2 = phoneElements[1];
+                const phone3 = phoneElements[2];
 
-        // Handle iframe communication if needed
-        window.addEventListener('message', function(event) {
-            // Accept messages from any origin for production
-            //if (event.origin === 'http://localhost:8084') {
-                console.log('Message from iframe:', event.data);
-            //}
-        });
+                const arrow1 = arrowElements[0];
+                const arrow2 = arrowElements[1];
 
-        // Handle iframe communication and message events
-        window.addEventListener('message', function(event) {
-            // Accept messages from any origin for production
-            //if (event.origin === 'http://localhost:8084') {
-                // Check if message is from Stage 1 and contains option data
-                if (event.data && event.data.type === 'option-clicked' && event.data.stage === 1) {
-                    updateStage1Section(event.data.option, event.data.description);
+                const scrollPos = window.scrollY;
+                const offset = section.offsetTop;
+                const windowHeight = window.innerHeight;
+
+                // Position calculation is complex and depends on min-height: 400vh on most sections.
+                const oneQuarter = offset + (section.offsetHeight * 0.25);
+                const oneHalf = offset + (section.offsetHeight * 0.5);
+                const threeQuarters = offset + (section.offsetHeight * 0.75);
+
+                // Phone 1 visibility (start to 3/4 way down)
+                if (scrollPos + windowHeight > offset + 100) {
+                    phone1.classList.add('visible');
                 } else {
-                    console.log('Message from iframe:', event.data);
+                    phone1.classList.remove('visible');
                 }
-            //}
-        });
+                
+                // Phone 2 visibility (1/4 way down)
+                if (scrollPos + windowHeight > oneQuarter) {
+                    phone2.classList.add('visible');
+                    arrow1.classList.add('visible');
+                } else {
+                    phone2.classList.remove('visible');
+                    arrow1.classList.remove('visible');
+                }
 
-        // Function to update Stage 1 dynamic section
-        function updateStage1Section(optionTitle, description) {
-            const dynamicSection = document.getElementById('stage1-dynamic-section');
-            const titleElement = document.getElementById('stage1-option-title');
-            const descriptionElement = document.getElementById('stage1-option-description');
+                // Phone 3 visibility (1/2 way down)
+                if (scrollPos + windowHeight > oneHalf) {
+                    phone3.classList.add('visible');
+                    arrow2.classList.add('visible');
+                } else {
+                    phone3.classList.remove('visible');
+                    arrow2.classList.remove('visible');
+                }
+                
+                // For the SolarFlow tab, we disable the visibility logic since it's an inline 100vh page
+                if (section.id === 'solarflow') {
+                    phone1.classList.add('visible');
+                    if (phone2) phone2.classList.add('visible');
+                    if (phone3) phone3.classList.add('visible');
+                    if (arrow1) arrow1.classList.add('visible');
+                    if (arrow2) arrow2.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize visibility and set scroll listener
+        window.onload = function() {
+            // Set initial active tab
+            switchTab('linktree1');
             
-            // Update content
-            titleElement.textContent = optionTitle;
-            
-            // Handle empty description
-            if (description && description.trim() !== '') {
-                descriptionElement.querySelector('p').textContent = description;
-                descriptionElement.style.display = 'block';
-            } else {
-                descriptionElement.style.display = 'none'; // Hide description area if empty
+            // Set scroll listener only for Project 1 sections
+            document.addEventListener('scroll', checkScrollVisibility);
+            checkScrollVisibility();
+        };
+        
+        // --- Project 2 Simplified Mockup Switching Logic ---
+        function showSolarView(viewName, buttonElement) {
+            // Hide all mockups in the content area
+            document.getElementById('social-mockup').style.display = 'none';
+            document.getElementById('thankyou-mockup').style.display = 'none';
+            document.getElementById('disqualify-mockup').style.display = 'none';
+            document.getElementById('linktree-mockup').style.display = 'none';
+
+            // Show the selected mockup
+            if (viewName === 'social') {
+                document.getElementById('social-mockup').style.display = 'block';
+                document.getElementById('stage1-title').textContent = 'Ad on Socials';
+                document.getElementById('stage1-description-text').innerHTML = '<p style="margin: 0; color: #555; line-height: 1.6;">Learn More button links out to content page.</p>';
+            } else if (viewName === 'thankyou') {
+                document.getElementById('thankyou-mockup').style.display = 'block';
+                document.getElementById('stage1-title').textContent = 'Thank You Page';
+                document.getElementById('stage1-description-text').innerHTML = '<p style="margin: 0; color: #555; line-height: 1.6;">Content embedded on a Thank You page as a follow-up action.</p>';
+            } else if (viewName === 'disqualify') {
+                document.getElementById('disqualify-mockup').style.display = 'block';
+                document.getElementById('stage1-title').textContent = 'Disqualifying Offer';
+                document.getElementById('stage1-description-text').innerHTML = '<p style="margin: 0; color: #555; line-height: 1.6;">User shown educational content after failing qualification check.</p>';
+            } else if (viewName === 'linktree') {
+                document.getElementById('linktree-mockup').style.display = 'flex'; // Use flex to center the content
+                document.getElementById('stage1-title').textContent = 'Linktree';
+                document.getElementById('stage1-description-text').innerHTML = '<p style="margin: 0; color: #555; line-height: 1.6;">User clicks on a Linktree button leading to the article/content.</p>';
             }
-            
-            // Show the section
-            dynamicSection.style.display = 'block';
-            
-            console.log('Stage 1 section updated:', optionTitle);
+
+            // Update button highlighting
+            buttonElement.parentElement.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
         }
 
-        // Test function for console debugging - SIMPLIFIED
-        window.testStage1Switch = function(version) {
-            console.log(`🧪 Manual test: Switching to ${version}`);
-            switchStage1Version(version);
-        };
-        
-        // Simple direct test functions
-        window.showThankYou = function() {
-            console.log('🎯 DIRECT: Showing Thank You page');
-            document.getElementById('stage1-social').style.display = 'none';
-            document.getElementById('stage1-disqualify').style.display = 'none';
-            document.getElementById('stage1-thankyou').style.display = 'block';
-            console.log('✅ Thank you iframe should now be visible');
-        };
-        
-        window.showDisqualify = function() {
-            console.log('🎯 DIRECT: Showing Disqualify page');
-            document.getElementById('stage1-social').style.display = 'none';
-            document.getElementById('stage1-thankyou').style.display = 'none';
-            document.getElementById('stage1-disqualify').style.display = 'block';
-            console.log('✅ Disqualify iframe should now be visible');
-        };
-        
-        window.showSocial = function() {
-            console.log('🎯 DIRECT: Showing Social page');
-            document.getElementById('stage1-thankyou').style.display = 'none';
-            document.getElementById('stage1-disqualify').style.display = 'none';
-            document.getElementById('stage1-social').style.display = 'block';
-            console.log('✅ Social div should now be visible');
-        };
-        
-        // Test function to show all elements
-        window.debugStage1Elements = function() {
-            console.log('🔍 DEBUGGING STAGE 1 ELEMENTS:');
-            console.log('=================================');
-            
-            const buttons = document.querySelectorAll('.toggle-btn');
-            console.log(`Found ${buttons.length} toggle buttons:`);
-            buttons.forEach((btn, i) => {
-                console.log(`  ${i+1}. "${btn.textContent}" - data-version: ${btn.getAttribute('data-version')}`);
-            });
-            
-            const versions = document.querySelectorAll('.stage1-version');
-            console.log(`\nFound ${versions.length} stage1 versions:`);
-            versions.forEach((version, i) => {
-                const rect = version.getBoundingClientRect();
-                const isVisible = rect.width > 0 && rect.height > 0;
-                console.log(`  ${i+1}. ${version.id} (${version.tagName}) - display: ${getComputedStyle(version).display} - visible: ${isVisible}`);
-                if (version.src) console.log(`      src: ${version.src}`);
-            });
-        };
-        
-        // Make functions available globally for console testing
-        function switchStage1Version(version) {
-            console.log(`Switching Stage 1 to: ${version}`);
-            switchToView(version);
-        }
-        
-        window.switchStage1Version = switchStage1Version;
-
-        // SIMPLIFIED AUTO-ROTATION: USING NEW SYSTEM
-        console.log('Using new auto-rotation system');
     </script>
-    
-    <!-- Auto-rotation script -->
-    <script src="auto-rotate.js">// Just run at the end of all scripts
-console.log('SolarFlow page loaded!');
-
-// EMERGENCY MOBILE STAGE 1 FIX
-if (window.innerWidth <= 768) {
-    console.log('🚨 EMERGENCY MOBILE FIX: Enabling Stage 1 access');
-    
-    // Find all stages
-    const stages = document.querySelectorAll('.flow-stage');
-    const flowStages = document.querySelector('.flow-stages');
-    
-    // Completely different approach: Reorder the DOM elements
-    if (stages.length >= 3 && flowStages) {
-        console.log('Restructuring stages to ensure Stage 1 is accessible');
-        
-        // Clone the stages
-        const stage1 = stages[0].cloneNode(true);
-        const stage2 = stages[1].cloneNode(true);
-        const stage3 = stages[2].cloneNode(true);
-        
-        // Remove existing stages
-        flowStages.innerHTML = '';
-        
-        // Add them back in the correct order
-        flowStages.appendChild(stage1);
-        flowStages.appendChild(stage2);
-        flowStages.appendChild(stage3);
-        
-        // Apply fixed styling
-        flowStages.style.cssText = `
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            overflow-x: scroll !important;
-            overflow-y: hidden !important;
-            scroll-snap-type: x mandatory !important;
-            -webkit-overflow-scrolling: touch !important;
-            width: 100vw !important;
-            height: calc(100vh - 120px) !important;
-            position: relative !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: none !important;
-        `;
-        
-        // Style each stage properly
-        document.querySelectorAll('.flow-stage').forEach((stage, index) => {
-            stage.style.cssText = `
-                min-width: 100vw !important;
-                width: 100vw !important;
-                flex: 0 0 100vw !important;
-                flex-shrink: 0 !important;
-                scroll-snap-align: start !important;
-                height: 100% !important;
-                overflow-y: auto !important;
-                position: relative !important;
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                order: ${index + 1} !important;
-            `;
-        });
-        
-        // Forcefully scroll to stage 1
-        flowStages.scrollLeft = 0;
-        
-        // Set up button functionality in Stage 1
-        const toggleBtns = document.querySelectorAll('.toggle-btn');
-        if (toggleBtns.length > 0) {
-            // Social button
-            toggleBtns[0].addEventListener('click', function() {
-                const socialDiv = document.getElementById('stage1-social-div');
-                const iframe = document.getElementById('stage1-iframe');
-                if (socialDiv && iframe) {
-                    iframe.style.display = 'none';
-                    socialDiv.style.display = 'block';
-                    toggleBtns.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-            
-            // Thank You button
-            if (toggleBtns[1]) {
-                toggleBtns[1].addEventListener('click', function() {
-                    const socialDiv = document.getElementById('stage1-social-div');
-                    const iframe = document.getElementById('stage1-iframe');
-                    if (socialDiv && iframe) {
-                        socialDiv.style.display = 'none';
-                        iframe.style.display = 'block';
-                        iframe.src = 'flow.html?step=6&hideDevNav=true';
-                        toggleBtns.forEach(btn => btn.classList.remove('active'));
-                        this.classList.add('active');
-                    }
-                });
-            }
-            
-            // Disqualify button
-            if (toggleBtns[2]) {
-                toggleBtns[2].addEventListener('click', function() {
-                    const socialDiv = document.getElementById('stage1-social-div');
-                    const iframe = document.getElementById('stage1-iframe');
-                    if (socialDiv && iframe) {
-                        socialDiv.style.display = 'none';
-                        iframe.style.display = 'block';
-                        iframe.src = 'flow.html?step=4&autoSelect=mostly-shade&showPopup=true&hideDevNav=true';
-                        toggleBtns.forEach(btn => btn.classList.remove('active'));
-                        this.classList.add('active');
-                    }
-                });
-            }
-            
-            // Default to showing social
-            toggleBtns[0].click();
-        }
-    }
-    
-    // Fix scroll dots
-    const scrollDots = document.querySelectorAll('.scroll-dot');
-    scrollDots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-            const flowStages = document.querySelector('.flow-stages');
-            if (flowStages) {
-                const targetScroll = window.innerWidth * index;
-                flowStages.scrollTo({left: targetScroll, behavior: 'smooth'});
-                
-                // Update active state
-                scrollDots.forEach((d, i) => {
-                    d.classList.toggle('active', i === index);
-                });
-            }
-        });
-    });
-    
-    // Activate first dot
-    if (scrollDots.length > 0) {
-        scrollDots.forEach(dot => dot.classList.remove('active'));
-        scrollDots[0].classList.add('active');
-    }
-    
-    // Fix scroll position - try multiple times
-    const forceScroll = function() {
-        if (flowStages) {
-            flowStages.scrollLeft = 0;
-            console.log('Forced scroll to Stage 1');
-        }
-    };
-    
-    forceScroll();
-    setTimeout(forceScroll, 100);
-    setTimeout(forceScroll, 500);
-    setTimeout(forceScroll, 1000);
-}
-</script>
 </body>
 </html>
